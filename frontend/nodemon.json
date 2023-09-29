@@ -1,0 +1,5 @@
+{
+  "watch": ["./public/locales/*"],
+  "ext": "json",
+  "exec": "npm run dev"
+}

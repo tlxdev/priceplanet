@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Country {
+  ES
+  FR
+  DE
+  IT
+  FI
+}
+
+model CostOfLiving {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  country Country
+  city    String
+
+  monthlyRent            Int?
+  monthlySalaryBeforeTax Int?
+  monthlySalaryAfterTax  Int?
+
+  lunchPrice Int?
+
+  happinessIndex       Int?
+  safetyIndex          Int?
+  nightWalkSafetyIndex Int?
+
+  healthcareSatisfactionIndex     Int?
+  infrastructureSatisfactionIndex Int?
+
+  // 0-10
+  environmentQualityIndex Int?
+}
