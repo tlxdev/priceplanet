@@ -53,6 +53,7 @@ export default function Home() {
 
   return (
     <>
+      <title>{t('lander:Title')}</title>
       <div
         className="hero min-h-screen"
         style={{

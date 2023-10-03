@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCostOfLivingDto } from './dto/create-cost-of-living.dto';
 import { UpdateCostOfLivingDto } from './dto/update-cost-of-living.dto';
+import { PrismaService } from 'src/lib/prisma/prisma.service';
 
 @Injectable()
 export class CostOfLivingService {
-  create(createCostOfLivingDto: CreateCostOfLivingDto) {
-    return 'This action adds a new costOfLiving';
+  constructor(private prismaService: PrismaService) {}
+
+  async create(createCostOfLivingDto: CreateCostOfLivingDto): Promise<void> {
+    await this.prismaService.costOfLiving.create({
+      data: createCostOfLivingDto,
+    });
+
+    return Promise.resolve();
   }
 
   findAll() {

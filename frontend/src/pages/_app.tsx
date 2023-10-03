@@ -4,10 +4,12 @@ import { appWithTranslation, i18n } from 'next-i18next';
 import { AppProps } from 'next/app';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <>
+  <div data-theme="dark">
     <Header />
-    <Component {...pageProps} />
-  </>
+    <div>
+      <Component {...pageProps} />
+    </div>
+  </div>
 );
 
 export const getStaticProps = async () => {

@@ -33,35 +33,6 @@ const SeoToCountryMap = Object.values(Country).reduce((map, country) => {
   };
 }, {});
 
-export async function getStaticPaths() {
-  const paths = [];
-
-  const languages = ['en'];
-  const defaultLanguage = 'en';
-
-  await i18n.use(Backend).init({
-    lng: defaultLanguage,
-    fallbackLng: defaultLanguage,
-    ns: ['seo'],
-    defaultNS: 'seo',
-    backend: {
-      loadPath: './public/locales/{{lng}}/{{ns}}.json',
-    },
-  });
-
-  const countryPaths = Object.values(Country).map((country) => {
-    return {
-      params: { name: getSeoFriendlyName(i18n.t, country) },
-      locale: defaultLanguage,
-    };
-  });
-
-  return {
-    paths: countryPaths,
-    fallback: false,
-  };
-}
-
 const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendlyName: string; locale: string }): Country => {
   let SeoToCountryMap: any = seoCache.get(locale);
 
@@ -93,6 +64,35 @@ const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendl
 
   return country;
 };
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  const languages = ['en'];
+  const defaultLanguage = 'en';
+
+  await i18n.use(Backend).init({
+    lng: defaultLanguage,
+    fallbackLng: defaultLanguage,
+    ns: ['seo'],
+    defaultNS: 'seo',
+    backend: {
+      loadPath: './public/locales/{{lng}}/{{ns}}.json',
+    },
+  });
+
+  const countryPaths = Object.values(Country).map((country) => {
+    return {
+      params: { name: getSeoFriendlyName(i18n.t, country) },
+      locale: defaultLanguage,
+    };
+  });
+
+  return {
+    paths: countryPaths,
+    fallback: false,
+  };
+}
 
 // Convert next line to arrow function:
 export async function getStaticProps({ locale, params }: { locale: string; params: { name: string; country: Country } }) {

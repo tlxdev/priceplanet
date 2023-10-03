@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import FormInput from './FormInput';
 import FormInputMoney from './FormInputMoney';
 import FormInputRating from './FormInputRating';
+import { createCostOfLiving } from '@/services/CostOfLivingService';
 
 const AddCountryDetailsForm = ({ country }: { country: Country }) => {
   const methods = useForm<AddCountryDetailsForm>();
@@ -14,8 +15,12 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
     formState: { errors },
   } = methods;
 
-  const onSubmit = (data: AddCountryDetailsForm) => {
-    console.log(data);
+  const onSubmit = async (data: AddCountryDetailsForm) => {
+    const submitData = {
+      ...data,
+      country,
+    };
+    await createCostOfLiving(submitData);
   };
 
   const onErrors = (errors: any) => {

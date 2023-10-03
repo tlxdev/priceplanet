@@ -1,59 +1,82 @@
+import Link from 'next/link';
+
 const Header = () => (
-  <div className="navbar bg-base-100">
+  <div className="navbar">
     <div className="navbar-start">
-      <div className="dropdown">
-        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
-        </label>
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li>
-            <a>Item 1</a>
+      <Link href="/">
+        <img
+          src="/logo.png"
+          alt="Logo"
+          style={{
+            width: 100,
+            height: 100,
+          }}
+        />
+      </Link>
+      <Link href="/" className="btn btn-ghost normal-case text-xl">
+        PricePlanet
+      </Link>
+      <div className="hidden lg:flex ml-10">
+        <ul className="menu menu-horizontal dropdown px-1">
+          <li tabIndex={0}>
+            <details>
+              <summary>Europe</summary>
+              <ul className="p-2">
+                <li>
+                  <Link href="/country/germany">Germany</Link>
+                </li>
+                <li>
+                  <Link href="/country/sweden">Sweden</Link>
+                </li>
+                <li>
+                  <Link href="/country/italy">Italy</Link>
+                </li>
+                <li>
+                  <Link href="/country/france">France</Link>
+                </li>
+                <li>
+                  <Link href="/country/united-kingdom">Britain</Link>
+                </li>
+              </ul>
+            </details>
           </li>
-          <li>
-            <a>Parent</a>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
+          <li tabIndex={1}>
+            <details>
+              <summary>Asia</summary>
+              <ul className="p-2">
+                <li>
+                  <a>South Korea</a>
+                </li>
+                <li>
+                  <a>Japan</a>
+                </li>
+                <li>
+                  <a>Thailand</a>
+                </li>
+              </ul>
+            </details>
           </li>
-          <li>
-            <a>Item 3</a>
+          <li tabIndex={2}>
+            <details>
+              <summary>Americas</summary>
+              <ul className="p-2">
+                <li>
+                  <a>USA</a>
+                </li>
+                <li>
+                  <a>Canada</a>
+                </li>
+                <li>
+                  <a>Brazil</a>
+                </li>
+                <li>
+                  <a>Mexico</a>
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
-      <a className="btn btn-ghost normal-case text-xl">price of things</a>
-    </div>
-    <div className="navbar-start hidden lg:flex">
-      <ul className="menu menu-horizontal px-1">
-        <li>
-          <a>Item 1</a>
-        </li>
-        <li tabIndex={0}>
-          <details>
-            <summary>Parent</summary>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <a>Item 3</a>
-        </li>
-      </ul>
-    </div>
-    <div className="navbar-end">
-      <a className="btn">Button</a>
     </div>
   </div>
 );
