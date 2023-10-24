@@ -81,23 +81,27 @@ const Lander = ({ location }: { location: geoip.Lookup }) => {
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const req = context.req;
-  const ip = req.socket.remoteAddress;
-  const location = geoip.lookup(ip ?? '0.0.0.0') ?? {
-    city: '?',
-    country: 'Unknown',
-  };
-  const locale = context.locale || DEFAULT_LOCALE;
+  try {
+    const req = context.req;
+    const ip = req.socket.remoteAddress;
+    const location = geoip.lookup(ip ?? '0.0.0.0') ?? {
+      city: '?',
+      country: 'Unknown',
+    };
+    const locale = context.locale || DEFAULT_LOCALE;
 
-  // geo will have location details  return {
-  return {
-    props: {
-      location,
-      ...(await serverSideTranslations(locale, ['common', 'lander', 'seo'])),
+    // geo will have location details  return {
+    return {
+      props: {
+        location,
+        ...(await serverSideTranslations(locale, ['common', 'lander', 'seo'])),
 
-      // Will be passed to the page component as props
-    },
-  };
+        // Will be passed to the page component as props
+      },
+    };
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export default Lander;
