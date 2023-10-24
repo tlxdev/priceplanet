@@ -1,7 +1,6 @@
 import AutoComplete from '@/components/AutoComplete';
 import { Country } from '@/constants/Country';
 import { DEFAULT_LOCALE } from '@/constants/Locale';
-import geoip from 'geoip-lite';
 import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -84,9 +83,12 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   try {
     const req = context.req;
     const ip = req.socket.remoteAddress;
+
+    const city = req.headers['x-vercel-ip-city'];
+    const country = req.headers['x-vercel-ip-country'];
     const location = geoip.lookup(ip ?? '0.0.0.0') ?? {
-      city: '?',
-      country: 'Unknown',
+      city: city || '?',
+      country: country || 'Unknown',
     };
     const locale = context.locale || DEFAULT_LOCALE;
 
