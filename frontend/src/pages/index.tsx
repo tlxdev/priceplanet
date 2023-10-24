@@ -23,6 +23,10 @@ const LanderAutoComplete = () => {
   const onSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
+    if (!selectedCountry) {
+      return;
+    }
+
     const selectedCountryValue = selectedCountry as Country;
 
     const seoFriendlyCountryName = t(`seo:CountrySeoFriendlyName.${selectedCountryValue}` as const);
