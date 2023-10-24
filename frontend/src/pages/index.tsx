@@ -96,7 +96,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     };
     const locale = context.locale || DEFAULT_LOCALE;
 
-    // geo will have location details  return {
     return {
       props: {
         location,
