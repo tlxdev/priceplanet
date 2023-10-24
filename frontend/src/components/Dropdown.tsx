@@ -7,11 +7,11 @@ interface DropdownProps {
 
 const Dropdown: FC<DropdownProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     // If the click is outside the dropdown, close it
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as any)) {
       setIsOpen(false);
     }
   };

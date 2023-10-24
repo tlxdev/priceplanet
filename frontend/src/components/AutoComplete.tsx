@@ -94,7 +94,7 @@ const AutoComplete = ({
   // Scroll to focused item
   useEffect(() => {
     if (focusIndex !== -1 && itemRefs.current[focusIndex]) {
-      itemRefs.current[focusIndex].scrollIntoView({ block: 'nearest' });
+      itemRefs.current[focusIndex]?.scrollIntoView({ block: 'nearest' });
     }
   }, [focusIndex]);
 
