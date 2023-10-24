@@ -50,7 +50,12 @@ const LanderAutoComplete = () => {
   );
 };
 
-const Lander = ({ location }: { location: geoip.Lookup }) => {
+interface GeoLocation {
+  city: string;
+  country: string;
+}
+
+const Lander = ({ location }: { location: GeoLocation }) => {
   const { t } = useTranslation(['common', 'lander']);
 
   return (
@@ -82,11 +87,10 @@ const Lander = ({ location }: { location: geoip.Lookup }) => {
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   try {
     const req = context.req;
-    const ip = req.socket.remoteAddress;
 
     const city = req.headers['x-vercel-ip-city'];
     const country = req.headers['x-vercel-ip-country'];
-    const location = geoip.lookup(ip ?? '0.0.0.0') ?? {
+    const location = {
       city: city || '?',
       country: country || 'Unknown',
     };

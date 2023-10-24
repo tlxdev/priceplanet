@@ -120,7 +120,6 @@ const AutoComplete = ({
           </span>
           {filteredValues.map((value, index) => (
             <li
-              key={value.value}
               className={`px-3 py-2 hover:bg-gray-100 cursor-default select-none relative ${index === focusIndex ? 'bg-gray-100' : ''}`}
               role="option"
               onClick={() => handleOptionClick(value)}

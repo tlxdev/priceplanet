@@ -6,7 +6,7 @@
     "dev": "nodemon --watch public/locales --ext js,json --exec \"next dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "tslint -p . -c tslint.json"
+    "lint": "npx next lint"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -34,8 +34,15 @@
   "devDependencies": {
     "daisyui": "^3.0.1",
     "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
     "nodemon": "^2.0.22",
     "tslint": "^5.20.1",
-    "tslint-config-airbnb": "^5.11.2"
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-react-hooks": "^2.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx next lint"
+    }
   }
 }
