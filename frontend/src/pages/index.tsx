@@ -66,9 +66,9 @@ const Lander = ({ location }: { location: GeoLocation }) => {
         style={{ backgroundImage: "url('/lander.png')", minHeight: 'calc(100vh - 72px)' }}
       >
         <div className="hero-content text-center text-black">
-          <div className="max-w-xl hero-custom">
-            <h1 className="text-xl md:text-5xl font-bold">Discover</h1>
-            <h1 className="mb-2 text-4xl md:text-8xl font-bold">Living Costs Worldwide</h1>
+          <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
+            <h1 className="text-xl xl:text-5xl font-bold">Discover</h1>
+            <h1 className="mb-2 text-4xl xl:text-8xl font-bold">Living Costs Worldwide</h1>
             <p className="mb-5">
               {t('lander:HeroText', {
                 city: location.city,
