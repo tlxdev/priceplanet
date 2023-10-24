@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import '@/styles/globals.scss';
+import { Analytics } from '@vercel/analytics/react';
 import { appWithTranslation, i18n } from 'next-i18next';
 import { AppProps } from 'next/app';
 
@@ -9,6 +10,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <Header />
     <div>
       <Component {...pageProps} />
+      <Analytics />
     </div>
   </div>
 );
