@@ -8,9 +8,11 @@
 import 'i18next';
 
 import type common from './public/locales/en/common.json';
-import type lander from './public/locales/en/lander.json';
 import type costOfLiving from './public/locales/en/cost-of-living.json';
-import seo from './public/locales/en/seo.json';
+import type countryDetailsForm from './public/locales/en/country-details-form.json';
+import type countryDetails from './public/locales/en/country-details.json';
+import type lander from './public/locales/en/lander.json';
+import type seo from './public/locales/en/seo.json';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
@@ -20,6 +22,8 @@ declare module 'i18next' {
       lander: typeof lander;
       'cost-of-living': typeof costOfLiving;
       seo: typeof seo;
+      'country-details': typeof countryDetails;
+      'country-details-form': typeof countryDetailsForm;
     };
     returnNull: false;
   }

@@ -1,27 +1,22 @@
 import { Country } from '@/constants/Country';
-import { GetStaticPaths } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { getSeoFriendlyName } from '@/constants/CountrySeoFriendlyName';
 import i18n from 'i18next';
 import Backend from 'i18next-fs-backend';
-import { getSeoFriendlyName } from '@/constants/CountrySeoFriendlyName';
 
-import fs from 'fs';
-import path from 'path';
-import NodeCache from 'node-cache';
 import AddCountryDetailsForm from '@/components/AddCountryDetailsForm';
+import fs from 'fs';
+import NodeCache from 'node-cache';
+import path from 'path';
 
 const seoCache = new NodeCache();
 
 const CountryPage = ({ country }: { country: Country }) => {
-  console.log('country', country);
-
   return (
-    <>
-      <div className="lg:w-1/3 sm:w-1/2 xs:w-full container mx-auto">
-        <AddCountryDetailsForm country={country} />
-      </div>
-    </>
+    <div className="lg:w-1/2 sm:w-1/2 xs:w-full container mx-auto">
+      <AddCountryDetailsForm country={country} />
+    </div>
   );
 };
 

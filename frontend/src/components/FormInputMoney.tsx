@@ -18,7 +18,12 @@ const FormInputMoney = ({
         <span className="label-text">{label}</span>
       </label>
       <div className="relative w-32">
-        <input type="number" className="input input-bordered block w-full" {...register} {...rest} />
+        <input
+          type="number"
+          className="input input-bordered block w-full"
+          {...register}
+          {...rest}
+        />
         <span className="absolute top-1/2 right-2.5 transform -translate-y-1/2">{currency}</span>
       </div>
     </div>

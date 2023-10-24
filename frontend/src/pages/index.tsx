@@ -1,9 +1,11 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import AutoComplete, { AutoCompleteOption } from '@/components/AutoComplete';
+import AutoComplete from '@/components/AutoComplete';
 import { Country } from '@/constants/Country';
-import { useRouter } from 'next/router';
 import { DEFAULT_LOCALE } from '@/constants/Locale';
+import geoip from 'geoip-lite';
+import { GetServerSidePropsContext } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const LanderAutoComplete = () => {
@@ -19,8 +21,8 @@ const LanderAutoComplete = () => {
     };
   });
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
 
     const selectedCountryValue = selectedCountry as Country;
 
@@ -34,37 +36,41 @@ const LanderAutoComplete = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="flex space-x-4">
+      <div className="space-y-2">
         <AutoComplete
           name="searchTerm"
           placeholder={t('lander:HeroInputPlaceholder')}
           values={countries}
           selectedValue={selectedCountry}
           onValueChange={setSelectedCountry}
+          onEnterPress={onSubmit}
         />
-        <button className="btn btn-primary">{t('lander:HeroButtonCTA')}</button>
+        <button className="btn btn-ghost px-16 h-12 text-lg border-gray-400">{t('lander:HeroButtonCTA')}</button>
       </div>
     </form>
   );
 };
 
-export default function Home() {
+const Lander = ({ location }: { location: geoip.Lookup }) => {
   const { t } = useTranslation(['common', 'lander']);
 
   return (
     <>
       <title>{t('lander:Title')}</title>
       <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage: `url(/worldmap.jpg)`,
-        }}
+        className="hero bg-slate-900 bg-center bg-cover"
+        style={{ backgroundImage: "url('/lander.png')", minHeight: 'calc(100vh - 72px)' }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">{t('lander:HeroText')}</p>
+        <div className="hero-content text-center text-black">
+          <div className="max-w-xl hero-custom">
+            <h1 className="text-xl md:text-5xl font-bold">Discover</h1>
+            <h1 className="mb-2 text-4xl md:text-8xl font-bold">Living Costs Worldwide</h1>
+            <p className="mb-5">
+              {t('lander:HeroText', {
+                city: location.city,
+                country: location.country,
+              })}
+            </p>
 
             <LanderAutoComplete />
           </div>
@@ -72,13 +78,26 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const req = context.req;
+  const ip = req.socket.remoteAddress;
+  const location = geoip.lookup(ip ?? '0.0.0.0') ?? {
+    city: '?',
+    country: 'Unknown',
+  };
+  const locale = context.locale || DEFAULT_LOCALE;
+
+  // geo will have location details  return {
   return {
     props: {
+      location,
       ...(await serverSideTranslations(locale, ['common', 'lander', 'seo'])),
+
       // Will be passed to the page component as props
     },
   };
-}
+};
+
+export default Lander;

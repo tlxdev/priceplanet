@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CostOfLivingModule } from './cost-of-living/cost-of-living.module';
+import { CostOfLivingModule } from './modules/cost-of-living/cost-of-living.module';
 import { PrismaModule } from './lib/prisma/prisma.module';
 
 @Module({

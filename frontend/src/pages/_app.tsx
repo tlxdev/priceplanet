@@ -3,8 +3,9 @@ import '@/styles/globals.scss';
 import { appWithTranslation, i18n } from 'next-i18next';
 import { AppProps } from 'next/app';
 
+
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <div data-theme="dark">
+  <div data-theme="light">
     <Header />
     <div>
       <Component {...pageProps} />

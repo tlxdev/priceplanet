@@ -6,6 +6,7 @@ export class CreateCostOfLivingDto {
   monthlyRent: number;
   monthlySalaryBeforeTax: number;
   monthlySalaryAfterTax: number;
+  monthlyGroceriesPrice: number;
   lunchPrice: number;
   happinessIndex: number;
   safetyIndex: number;

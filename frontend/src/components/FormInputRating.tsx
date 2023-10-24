@@ -9,32 +9,37 @@ const FormInputRating = ({ label, name }: { label: string; name: string }) => {
     if (value === selectedNumber) {
       return setSelectedNumber(null);
     }
-
     setSelectedNumber(value);
   };
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap mb-4">
       <label className="label flex-row">
         <span className="label-text">{label}</span>
       </label>
-      <div className="flex-row space-x-2">
+      <div className="flex space-x-2">
         {Array.from({ length: 11 }, (_, i) => i).map((value) => (
           <Controller
             name={name}
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <div
+              <button
                 key={value}
-                className={`btn ${value === selectedNumber ? 'btn-primary' : 'btn-outline'}`}
-                onClick={() => {
+                className={`
+                  py-2 px-4 rounded transition-all duration-200 ease-in-out 
+                  font-medium text-sm 
+                  ${value === selectedNumber ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700'}
+                  hover:${value === selectedNumber ? 'bg-primary' : 'bg-gray-300'}
+                `}
+                onClick={(event) => {
+                  event.preventDefault();
                   handleClick(value);
                   field.onChange(value); // this is where we inform react-hook-form of the change
                 }}
               >
                 {value}
-              </div>
+              </button>
             )}
           />
         ))}

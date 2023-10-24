@@ -1,81 +1,72 @@
 import Link from 'next/link';
+import Dropdown from './Dropdown';
+import NestedMenu from './NestedMenu';
 
 const Header = () => (
   <div className="navbar">
-    <div className="navbar-start">
+    <div className="xl:navbar-start">
       <Link href="/">
-        <img
-          src="/logo.png"
-          alt="Logo"
-          style={{
-            width: 100,
-            height: 100,
-          }}
-        />
+        <img src="/logo2.png" alt="Logo" className="h-14" />
       </Link>
-      <Link href="/" className="btn btn-ghost normal-case text-xl">
+      <Link href="/" className="btn btn-ghost normal-case text-lg">
         PricePlanet
       </Link>
-      <div className="hidden lg:flex ml-10">
-        <ul className="menu menu-horizontal dropdown px-1">
-          <li tabIndex={0}>
-            <details>
-              <summary>Europe</summary>
-              <ul className="p-2">
-                <li>
-                  <Link href="/country/germany">Germany</Link>
-                </li>
-                <li>
-                  <Link href="/country/sweden">Sweden</Link>
-                </li>
-                <li>
-                  <Link href="/country/italy">Italy</Link>
-                </li>
-                <li>
-                  <Link href="/country/france">France</Link>
-                </li>
-                <li>
-                  <Link href="/country/united-kingdom">Britain</Link>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li tabIndex={1}>
-            <details>
-              <summary>Asia</summary>
-              <ul className="p-2">
-                <li>
-                  <a>South Korea</a>
-                </li>
-                <li>
-                  <a>Japan</a>
-                </li>
-                <li>
-                  <a>Thailand</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li tabIndex={2}>
-            <details>
-              <summary>Americas</summary>
-              <ul className="p-2">
-                <li>
-                  <a>USA</a>
-                </li>
-                <li>
-                  <a>Canada</a>
-                </li>
-                <li>
-                  <a>Brazil</a>
-                </li>
-                <li>
-                  <a>Mexico</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-        </ul>
+    </div>
+    <div className="hidden xl:navbar-center">
+      <div className="lg:flex lg:ml-40">
+        <Dropdown title="Europe">
+          <NestedMenu
+            items={[
+              { label: '🇩🇪 Germany', href: '/country/germany' },
+              { label: '🇫🇷 France', href: '/country/france' },
+              { label: '🇬🇧 UK', href: '/country/united-kingdom' },
+              { label: '🇪🇸 Spain', href: '/country/spain' },
+              { label: '🇸🇪 Sweden', href: '/country/sweden' },
+              { label: '🇮🇹 Italy', href: '/country/italy' },
+            ]}
+          />
+        </Dropdown>
+
+        <Dropdown title="Asia">
+          <NestedMenu
+            items={[
+              { label: '🇯🇵 Japan', href: '/country/japan' },
+              { label: '🇹🇭 Thailand', href: '/country/thailand' },
+              { label: '🇰🇷 South Korea', href: '/country/south-korea' },
+              { label: '🇻🇳 Vietnam', href: '/country/vietnam' },
+              { label: '🇵🇭 Philippines', href: '/country/philippines' },
+              { label: '🇮🇩 Indonesia', href: '/country/indonesia' },
+            ]}
+          />
+        </Dropdown>
+
+        <Dropdown title="Africa">
+          <NestedMenu
+            items={[
+              { label: '🇳🇬 Nigeria', href: '/country/nigeria' },
+              { label: '🇿🇦 South Africa', href: '/country/south-africa' },
+            ]}
+          />
+        </Dropdown>
+
+        <Dropdown title="Americas">
+          <NestedMenu
+            items={[
+              { label: '🇺🇸 USA', href: '/country/usa' },
+              { label: '🇨🇦 Canada', href: '/country/canada' },
+              { label: '🇧🇷 Brazil', href: '/country/brazil' },
+            ]}
+          />
+        </Dropdown>
+
+        <Dropdown title="Oceania">
+          <NestedMenu
+            items={[
+              { label: '🇦🇺 Australia', href: '/country/australia' },
+              { label: '🇳🇿 New Zealand', href: '/country/new-zealand' },
+            ]}
+          />
+        </Dropdown>
       </div>
     </div>
   </div>

@@ -1,53 +1,85 @@
-import { Country } from '@/constants/Country';
-import { GetStaticPaths } from 'next';
+import { COUNTRY_DETAILS, Country, getCurrencySymbol } from '@/constants/Country';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { getSeoFriendlyName } from '@/constants/CountrySeoFriendlyName';
 import i18n from 'i18next';
 import Backend from 'i18next-fs-backend';
-import { getSeoFriendlyName } from '@/constants/CountrySeoFriendlyName';
 
+import { countryCodeToEmoji } from '@/utils/CountryUtils';
+import typedFetch from '@/utils/Fetch';
 import fs from 'fs';
-import path from 'path';
-import NodeCache from 'node-cache';
 import { useTranslation } from 'next-i18next';
+import Head from 'next/head';
+import NodeCache from 'node-cache';
+import path from 'path';
 
 const seoCache = new NodeCache();
 
-const CountryPage = ({ country }: { country: Country }) => {
+interface PublicPriceData {
+  averageRent: number;
+
+  averageSalaryBeforeTax: number;
+  averageSalaryAfterTax: number;
+
+  averageMonthlyGroceriesPrice: number;
+  averageMonthlyTransportPrice: number;
+
+  averageLunchPrice: number;
+}
+
+const CountryPage = ({ country, data }: { country: Country; data: PublicPriceData }) => {
   const { t } = useTranslation(['common', 'seo', 'cost-of-living']);
+
+  const currency = COUNTRY_DETAILS[country].currency;
+
+  const currencySymbol = getCurrencySymbol(currency);
 
   return (
     <>
-      <title>
-        {t('cost-of-living:title', {
-          country: t(`common:Country.${country}` as const),
-        })}
-      </title>
+      <Head>
+        <title>
+          {t('cost-of-living:title', {
+            country: t(`common:Country.${country}` as const),
+          })}
+        </title>
+        <meta name="description" content={`${t(`common:Country.${country}`)} Cost of Living`} />
+      </Head>
       <div className="flex flex-col content">
-        <h1 className="text-center text-3xl">{t(`common:Country.${country}` as const)}  </h1>
-        <p className=" mt-5">
-          Immerse in Germany's refined blend of tradition and modernity. As you traverse through its picturesque landscapes, the vibrant
-          culture unfolds, narrating tales of a rich historical tapestry. Cities buzz with contemporary allure, hosting a plethora of
-          events, while rural regions preserve the quaint charm of yesteryears. The Germans uphold punctuality and efficiency, mirrored in
-          their pristine public transport and robust economy. Culinary delights range from hearty local dishes to avant-garde gastronomy,
-          echoing the country's knack for excellence and innovation. Embrace the Gemütlichkeit (cozy friendliness) at a local beer garden, a
-          microcosm of Germany's welcoming social fabric.
+        <h1 className="text-center text-3xl mt-4 mb-4">{t(`common:Country.${country}` as const)} </h1>
+        <p className="mt-5">{t(`country-details:${country}` as any)}</p>
+
+        <div className="alert mt-10 mb-10">
+          <span>Are you a local? Add your details to help others!</span>
+          <a href={`/country/${getSeoFriendlyName(t, country)}/add-details`}>
+            <button className="btn btn-ghost mx-0 px-">Add my details {countryCodeToEmoji(country)}</button>
+          </a>
+        </div>
+
+        <div className="divider" />
+
+        <p>Cost of Living</p>
+        <p>
+          Monthly rent: {data.averageRent} {currencySymbol}
         </p>
+        <p>
+          Monthly groceries: {data.averageMonthlyGroceriesPrice} {currencySymbol}
+        </p>
+        <p>
+          Monthly transportation: {data.averageMonthlyTransportPrice} {currencySymbol}
+        </p>
+        <p>
+          Lunch price: {data.averageLunchPrice} {currencySymbol}
+        </p>
+        <div className="divider" />
 
-        <p className="mt-10">Cost of Living</p>
-        <p>Monthly rent: 600€</p>
-        <p>Monthly groceries: 200€</p>
-        <p>Monthly transportation: 100€</p>
-        <p>Monthly health insurance: 100€</p>
-
-        <p className="mt-10">Salaries</p>
-        <p>Average (before taxes): 3000€</p>
-        <p>Average (after taxes): 2500€</p>
-        <p>Minimum wage: 1500€</p>
-
-        <a href={`/country/${getSeoFriendlyName(t, country)}/add-details`}>
-          <button className="btn btn-primary w-40 mt-10">Submit my COL</button>
-        </a>
+        <p>Salaries</p>
+        <p>
+          Average (before taxes): {data.averageSalaryBeforeTax} {currencySymbol}
+        </p>
+        <p>
+          Average (after taxes): {data.averageSalaryAfterTax} {currencySymbol}
+        </p>
+        {/*<p>Minimum wage: 1500€</p>*/}
       </div>
     </>
   );
@@ -108,8 +140,6 @@ const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendl
     SeoToCountryMap = Object.keys(seoTranslations.CountrySeoFriendlyName).reduce((map, country: string) => {
       const seoFriendlyName = seoTranslations.CountrySeoFriendlyName[country];
 
-      console.log(country, seoFriendlyName);
-
       return {
         ...map,
         [seoFriendlyName]: country,
@@ -125,11 +155,18 @@ const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendl
 };
 
 // Convert next line to arrow function:
-export async function getStaticProps({ locale, params }: { locale: string; params: { name: string; country: Country } }) {
+export async function getStaticProps({ locale, params }: { locale: string; params: { name: string } }) {
+  const country = getCountryFromSeoFriendlyName({ seoFriendlyName: params.name, locale });
+  console.log(`${process.env.NEXT_PUBLIC_API_URL}/cost-of-living/country/${country}`);
+  const apiResponse = await typedFetch<PublicCostOfLivingData>(`${process.env.NEXT_PUBLIC_API_URL}/cost-of-living/country/${country}`);
+
+  const data = apiResponse.data;
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'seo'])),
-      country: getCountryFromSeoFriendlyName({ seoFriendlyName: params.name, locale }),
+      ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'seo', 'country-details'])),
+      country,
+      data,
     },
   };
 }

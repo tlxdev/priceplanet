@@ -1,8 +1,8 @@
 {
   "Title": "Cost of Living | Priceplanet",
-  "HeroText": "Welcome to [Your Website Name], your definitive guide to the cost of living worldwide. Discover and compare costs for rent, groceries, salaries, and more across different cities.",
-  "HeroInputPlaceholder": "Country or city",
-  "HeroButtonCTA": "View Cost of Living",
+  "HeroText": "You're currently in {{city}}, {{country}}. But did you know that the world is a large place?",
+  "HeroInputPlaceholder": "Country",
+  "HeroButtonCTA": "Search",
   "HowItWorksText": "Uncover the true cost of living in just three steps. Select a location, view comprehensive cost details, and compare with other cities. Make informed decisions about your next move.",
   "ExploreCitiesText": "Explore Cities: Get the lowdown on living costs in major cities worldwide. From San Francisco to Sydney, understand what your money can buy.",
   "DetailedBreakdownText": "Delve Deeper: Not just total cost, we break it down for you. Understand how much you're likely to spend on rent, groceries, dining, entertainment, and more.",

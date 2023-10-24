@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { Country } from '@/constants/Country';
+import { countryCodeToEmoji } from '@/utils/CountryUtils';
+import React, { useEffect, useRef, useState } from 'react';
 
 export interface AutoCompleteOption {
   value: string;
@@ -11,12 +13,14 @@ const AutoComplete = ({
   name,
   selectedValue,
   onValueChange,
+  onEnterPress,
 }: {
   values: AutoCompleteOption[];
   placeholder: string | null;
   name: string;
   selectedValue: string | null;
   onValueChange: (value: string | null) => void;
+  onEnterPress: () => void;
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [filteredValues, setFilteredValues] = useState<AutoCompleteOption[]>([]);
@@ -64,10 +68,16 @@ const AutoComplete = ({
         e.preventDefault();
         break;
       case 'Enter':
+        e.preventDefault();
+
+        if (selectedValue) {
+          onEnterPress();
+          return;
+        }
+
         if (focusIndex !== -1) {
           handleOptionClick(filteredValues[focusIndex]);
         }
-        e.preventDefault();
         break;
       case 'Escape':
         setFilteredValues([]);
@@ -91,7 +101,7 @@ const AutoComplete = ({
   return (
     <div className="relative" role="combobox" aria-expanded="false" aria-owns="autocomplete-list" aria-haspopup="listbox">
       <input
-        className="input input-bordered input-primary w-full max-w-xs"
+        className="input input-bordered input w-full max-w-xs text-gray-700"
         type="text"
         aria-autocomplete="list"
         aria-controls="autocomplete-list"
@@ -101,9 +111,13 @@ const AutoComplete = ({
         onKeyDown={handleKeyPress}
         ref={inputRef}
         name={name}
+        autoComplete="off"
       />
       {!selectedValue && filteredValues.length > 0 && (
-        <ul className="absolute w-full mt-1 bg-gray-800 border border-gray-300 overflow-auto max-h-60" role="listbox">
+        <ul className="w-80 mt-1 bg-white border border-gray-300 overflow-auto max-h-60 ml-3 md:ml-32" role="listbox">
+          <span className="flex ml-2 pt-2">
+            Search results:
+          </span>
           {filteredValues.map((value, index) => (
             <li
               key={value.value}
@@ -113,7 +127,10 @@ const AutoComplete = ({
               aria-selected={index === focusIndex}
               ref={(ref) => (itemRefs.current[index] = ref)}
             >
-              <span className="block truncate">{value.label}</span>
+              <div className="space-x-2 flex">
+                <span>{countryCodeToEmoji(value.value as Country)}</span>
+                <span className="block truncate">{value.label}</span>
+              </div>
             </li>
           ))}
         </ul>

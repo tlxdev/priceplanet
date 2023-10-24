@@ -4,6 +4,6 @@ import { CostOfLivingController } from './cost-of-living.controller';
 
 @Module({
   controllers: [CostOfLivingController],
-  providers: [CostOfLivingService]
+  providers: [CostOfLivingService],
 })
 export class CostOfLivingModule {}

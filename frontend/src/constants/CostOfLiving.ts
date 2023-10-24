@@ -37,6 +37,7 @@ export interface AddCountryDetailsForm {
   monthlyRent: number;
   monthlySalaryBeforeTax: number;
   monthlySalaryAfterTax: number;
+  monthlyGroceriesPrice: number;
 
   lunchPrice: number;
 

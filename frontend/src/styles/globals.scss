@@ -17,11 +17,17 @@
 }
 
 body {
+  background: #fff;
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
   .content {
     margin-left: 32rem;
     margin-right: 32rem;
+
+    @media (max-width: 1324px) {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
   }
 }
 
@@ -34,4 +40,39 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield; /* Firefox */
+}
+
+
+@layer base {
+  html {
+    font-family: 'Proxima Nova', system-ui, sans-serif;
+  }
+}
+
+.hero-custom {
+
+  @media screen and (min-height: 1224px) {
+    margin-top: -400px;
+  }
+
+  @media screen and (min-height: 1024px) and (max-height: 1224px) {
+    margin-top: -300px;
+  }
+
+  @media screen and (min-height: 768px) and (max-height: 1024px) {
+    margin-top: -190px;
+  }
+
+  @media screen and (min-height: 576px) and (max-height: 768px) {
+    margin-top: 200px;
+  }
+
+  @media screen and (min-height: 320px) and (max-height: 576px) {
+    margin-top: 200px;
+  }
+
+
+  @media screen and (min-height: 0px) and (max-height: 320px) {
+    margin-top: 200px;
+  }
 }
