@@ -20,6 +20,7 @@ const FormInputRating = ({ label, name }: { label: string; name: string }) => {
       <div className="flex space-x-2">
         {Array.from({ length: 11 }, (_, i) => i).map((value) => (
           <Controller
+            key={value}
             name={name}
             control={control}
             rules={{ required: true }}

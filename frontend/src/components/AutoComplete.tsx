@@ -42,7 +42,7 @@ const AutoComplete = ({
     }, 30);
 
     return () => clearTimeout(timeout);
-  }, [inputValue]);
+  }, [inputValue, values, onValueChange]);
 
   // Reset focus index when filtered values change
   useEffect(() => {

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import Dropdown from './Dropdown';
 import NestedMenu from './NestedMenu';
@@ -6,13 +7,13 @@ const Header = () => (
   <div className="navbar">
     <div className="xl:navbar-start">
       <Link href="/">
-        <img src="/logo2.png" alt="Logo" className="h-14" />
+        <Image src="/logo2.png" alt="Logo" className="h-14" width={64} height={64} />
       </Link>
       <Link href="/" className="btn btn-ghost normal-case text-lg">
         PricePlanet
       </Link>
     </div>
-    <div className="hidden xl:navbar-center">
+    <div className="hidden md:block xl:navbar-center">
       <div className="lg:flex lg:ml-40">
         <Dropdown title="Europe">
           <NestedMenu
