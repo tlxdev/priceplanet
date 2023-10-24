@@ -72,7 +72,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
             <p className="mb-5">
               {t('lander:HeroText', {
                 city: location.city,
-                country: location.country,
+                country: t(`common:Country.${location.country}` as any || '?'),
               })}
             </p>
 
