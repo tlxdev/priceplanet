@@ -59,7 +59,7 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
 
   return (
     <FormProvider {...methods}>
-      <h1 className="text-2xl font-semibold">Add country details for {country}</h1>
+      <h1 className="text-2xl font-semibold">Submit details for {country}</h1>
       <form onSubmit={handleSubmit(onSubmit, onErrors)} className="form form-bordered w-full mx-auto pb-16 pt-8">
         <FormInput required label="What city do you live in?" register={register('city', { required: true })} />
         <div className="divider" />

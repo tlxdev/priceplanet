@@ -100,7 +100,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
 
             <LanderAutoComplete />
 
-            <Link href={`/country/${countryName.toLowerCase()}`}>
+            <Link href={`/country/${countryName.toLowerCase()}/add-details`}>
               <button className="btn btn-primary px-8 mt-6 h-12 text-lg border-gray-400">
                 <div className="space-x-2">
                   <span>{t('lander:SubmitMyDetails')}</span>
