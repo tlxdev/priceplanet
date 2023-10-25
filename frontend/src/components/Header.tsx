@@ -4,7 +4,7 @@ import Dropdown from './Dropdown';
 import NestedMenu from './NestedMenu';
 
 const Header = () => (
-  <div className="navbar">
+  <div className="navbar z-50 relative">
     <div className="xl:navbar-start">
       <Link href="/">
         <Image src="/logo.png" alt="Logo" className="h-14" width={64} height={64} />

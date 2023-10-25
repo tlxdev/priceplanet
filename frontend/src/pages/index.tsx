@@ -74,7 +74,15 @@ const Lander = ({ location }: { location: GeoLocation }) => {
         <meta property="og:image" content="/logo.png" />
       </Head>
       <div className="hero bg-slate-900 bg-center bg-cover" style={{ minHeight: 'calc(100vh - 72px)' }}>
-        <Image src="/lander.png" layout="fill" objectFit="cover" quality={100} priority={true} alt="Background Image" />
+        <div
+          className="absolute w-full"
+          style={{
+            paddingTop: '72px',
+            height: 'calc(100vh)',
+          }}
+        >
+          <Image src="/lander.png" fill objectFit="cover" quality={100} priority={true} alt="Background Image" />
+        </div>
         <div className="hero-content text-center text-black">
           <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
             <h1 className="text-xl xl:text-5xl font-bold">Discover</h1>
