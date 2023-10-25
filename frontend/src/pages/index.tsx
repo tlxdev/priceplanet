@@ -79,9 +79,10 @@ const Lander = ({ location }: { location: GeoLocation }) => {
           style={{
             paddingTop: '72px',
             height: 'calc(100vh)',
+            background: '#FFF'
           }}
         >
-          <Image src="/lander.png" fill objectFit="cover" quality={100} priority={true} alt="Background Image" />
+          <Image src="/lander.png" fill objectFit="cover" quality={100} priority={true} alt="Lander Image"/>
         </div>
         <div className="hero-content text-center text-black">
           <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
