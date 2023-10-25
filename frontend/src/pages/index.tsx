@@ -5,6 +5,7 @@ import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -72,10 +73,8 @@ const Lander = ({ location }: { location: GeoLocation }) => {
         <meta property="og:description" content={t('lander:MetaDescription')} />
         <meta property="og:image" content="/logo.png" />
       </Head>
-      <div
-        className="hero bg-slate-900 bg-center bg-cover"
-        style={{ backgroundImage: "url('/lander.png')", minHeight: 'calc(100vh - 72px)' }}
-      >
+      <div className="hero bg-slate-900 bg-center bg-cover" style={{ minHeight: 'calc(100vh - 72px)' }}>
+        <Image src="/lander.png" layout="fill" objectFit="cover" quality={100} priority={true} alt="Background Image" />
         <div className="hero-content text-center text-black">
           <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
             <h1 className="text-xl xl:text-5xl font-bold">Discover</h1>
