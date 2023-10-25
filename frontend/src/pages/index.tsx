@@ -4,6 +4,7 @@ import { DEFAULT_LOCALE } from '@/constants/Locale';
 import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -64,7 +65,13 @@ const Lander = ({ location }: { location: GeoLocation }) => {
 
   return (
     <>
-      <title>{t('lander:Title')}</title>
+      <Head>
+        <title>priceplanet.org</title>
+        <meta name="description" content={t('lander:MetaDescription')} />
+        <meta property="og:title" content="priceplanet.org" />
+        <meta property="og:description" content={t('lander:MetaDescription')} />
+        <meta property="og:image" content="/logo.png" />
+      </Head>
       <div
         className="hero bg-slate-900 bg-center bg-cover"
         style={{ backgroundImage: "url('/lander.png')", minHeight: 'calc(100vh - 72px)' }}
@@ -76,7 +83,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
             <p className="mb-5">
               {t('lander:HeroText', {
                 city: location.city,
-                country: t(`common:Country.${location.country}` as any || '?'),
+                country: t((`common:Country.${location.country}` as any) || '?'),
               })}
             </p>
 

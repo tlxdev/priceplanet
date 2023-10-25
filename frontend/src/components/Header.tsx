@@ -7,9 +7,9 @@ const Header = () => (
   <div className="navbar">
     <div className="xl:navbar-start">
       <Link href="/">
-        <Image src="/logo2.png" alt="Logo" className="h-14" width={64} height={64} />
+        <Image src="/logo.png" alt="Logo" className="h-14" width={64} height={64} />
       </Link>
-      <Link href="/" className="btn btn-ghost normal-case text-lg">
+      <Link href="/" className="btn btn-ghost normal-case text-xl px-0">
         PricePlanet
       </Link>
     </div>
