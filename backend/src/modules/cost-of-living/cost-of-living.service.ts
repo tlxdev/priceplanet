@@ -37,8 +37,6 @@ export class CostOfLivingService {
 
     const averageMonthlyGroceriesPrice = forCountry.reduce((acc, curr) => acc + curr.monthlyGroceriesPrice, 0) / forCountry.length;
 
-    console.log(averageLunchPrice);
-
     return {
       averageRent,
       averageSalaryBeforeTax,

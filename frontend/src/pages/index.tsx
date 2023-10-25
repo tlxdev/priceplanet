@@ -1,11 +1,13 @@
 import AutoComplete from '@/components/AutoComplete';
 import { Country } from '@/constants/Country';
 import { DEFAULT_LOCALE } from '@/constants/Locale';
+import { countryCodeToEmoji } from '@/utils/CountryUtils';
 import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -64,6 +66,8 @@ interface GeoLocation {
 const Lander = ({ location }: { location: GeoLocation }) => {
   const { t } = useTranslation(['common', 'lander']);
 
+  const countryName = t(`common:Country.${location.country}` as any);
+
   return (
     <>
       <Head>
@@ -78,10 +82,10 @@ const Lander = ({ location }: { location: GeoLocation }) => {
           className="absolute w-full"
           style={{
             height: 'calc(100vh - 72px)',
-            background: '#FFF'
+            background: '#FFF',
           }}
         >
-          <Image src="/lander.png" fill objectFit="cover" quality={100} priority={true} alt="Lander Image"/>
+          <Image src="/lander.png" fill objectFit="cover" quality={100} priority={true} alt="Lander Image" />
         </div>
         <div className="hero-content text-center text-black">
           <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
@@ -90,11 +94,20 @@ const Lander = ({ location }: { location: GeoLocation }) => {
             <p className="mb-5">
               {t('lander:HeroText', {
                 city: location.city,
-                country: t((`common:Country.${location.country}` as any) || '?'),
+                country: countryName || '?',
               })}
             </p>
 
             <LanderAutoComplete />
+
+            <Link href={`/country/${countryName}`}>
+              <button className="btn btn-primary px-8 mt-6 h-12 text-lg border-gray-400">
+                <div className="space-x-2">
+                  <span>{t('lander:SubmitMyDetails')}</span>
+                  <span>{countryCodeToEmoji(location.country as Country)}</span>
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
