@@ -97,44 +97,49 @@ const AutoComplete = ({
       itemRefs.current[focusIndex]?.scrollIntoView({ block: 'nearest' });
     }
   }, [focusIndex]);
-
   return (
-    <div className="relative" role="combobox" aria-expanded="false" aria-owns="autocomplete-list" aria-haspopup="listbox">
-      <input
-        className="input input-bordered input w-full max-w-xs text-gray-700"
-        type="text"
-        aria-autocomplete="list"
-        aria-controls="autocomplete-list"
-        placeholder={placeholder || ''}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyPress}
-        ref={inputRef}
-        name={name}
-        autoComplete="off"
-      />
-      {!selectedValue && filteredValues.length > 0 && (
-        <ul className="w-80 mt-1 bg-white border border-gray-300 overflow-auto max-h-60 ml-3 md:ml-32" role="listbox">
-          <span className="flex ml-2 pt-2">
-            Search results:
-          </span>
-          {filteredValues.map((value, index) => (
-            <li
-              key={value.value}
-              className={`px-3 py-2 hover:bg-gray-100 cursor-default select-none relative ${index === focusIndex ? 'bg-gray-100' : ''}`}
-              role="option"
-              onClick={() => handleOptionClick(value)}
-              aria-selected={index === focusIndex}
-              ref={(ref) => (itemRefs.current[index] = ref)}
-            >
-              <div className="space-x-2 flex">
-                <span>{countryCodeToEmoji(value.value as Country)}</span>
-                <span className="block truncate">{value.label}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="flex justify-center items-center">
+      <div
+        className="relative flex flex-col w-full max-w-xs"
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="autocomplete-list"
+        aria-haspopup="listbox"
+      >
+        <input
+          className="input input-bordered text-gray-700 w-full"
+          type="text"
+          aria-autocomplete="list"
+          aria-controls="autocomplete-list"
+          placeholder={placeholder || ''}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyPress}
+          ref={inputRef}
+          name={name}
+          autoComplete="off"
+        />
+        {!selectedValue && filteredValues.length > 0 && (
+          <ul className="w-full mt-1 bg-white border border-gray-300 overflow-auto max-h-60" role="listbox">
+            <span className="flex ml-2 pt-2">Search results:</span>
+            {filteredValues.map((value, index) => (
+              <li
+                key={value.value}
+                className={`px-3 py-2 hover:bg-gray-100 cursor-default select-none relative ${index === focusIndex ? 'bg-gray-100' : ''}`}
+                role="option"
+                onClick={() => handleOptionClick(value)}
+                aria-selected={index === focusIndex}
+                ref={(ref) => (itemRefs.current[index] = ref)}
+              >
+                <div className="space-x-2 flex">
+                  <span>{countryCodeToEmoji(value.value as Country)}</span>
+                  <span className="block truncate">{value.label}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
