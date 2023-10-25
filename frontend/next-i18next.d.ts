@@ -11,6 +11,7 @@ import type common from './public/locales/en/common.json';
 import type costOfLiving from './public/locales/en/cost-of-living.json';
 import type countryDetailsForm from './public/locales/en/country-details-form.json';
 import type countryDetails from './public/locales/en/country-details.json';
+import type disclaimer from './public/locales/en/disclaimer.json';
 import type lander from './public/locales/en/lander.json';
 import type seo from './public/locales/en/seo.json';
 
@@ -24,6 +25,7 @@ declare module 'i18next' {
       seo: typeof seo;
       'country-details': typeof countryDetails;
       'country-details-form': typeof countryDetailsForm;
+      disclaimer: typeof disclaimer;
     };
     returnNull: false;
   }

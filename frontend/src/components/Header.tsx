@@ -71,6 +71,13 @@ const Header = () => {
               ]}
             />
           </Dropdown>
+
+          <Link
+            href="/disclaimer"
+            className="mt- inline-flex justify-center w-full rounded-md border-none  px-4 py-2 bg-white text-sm font-bold text-black hover:bg-gray-50 "
+          >
+            {t('common:Disclaimer')}
+          </Link>
         </div>
       </div>
     </div>

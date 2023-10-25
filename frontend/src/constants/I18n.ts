@@ -1,0 +1,1 @@
+export const SUPPORTED_ALTERNATIVE_LOCALES = ['it'];
