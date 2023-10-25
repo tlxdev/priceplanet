@@ -5,6 +5,7 @@ import { getSeoFriendlyName } from '@/constants/CountrySeoFriendlyName';
 import i18n from 'i18next';
 import Backend from 'i18next-fs-backend';
 
+import MoneyValue from '@/components/MoneyValue';
 import { countryCodeToEmoji } from '@/utils/CountryUtils';
 import typedFetch from '@/utils/Fetch';
 import fs from 'fs';
@@ -59,25 +60,25 @@ const CountryPage = ({ country, data }: { country: Country; data: PublicPriceDat
 
         <p>Cost of Living</p>
         <p>
-          Monthly rent: {data.averageRent} {currencySymbol}
+          Monthly rent: <MoneyValue value={data.averageRent} /> {currencySymbol}
         </p>
         <p>
-          Monthly groceries: {data.averageMonthlyGroceriesPrice} {currencySymbol}
+          Monthly groceries: <MoneyValue value={data.averageMonthlyGroceriesPrice} /> {currencySymbol}
         </p>
         <p>
-          Monthly transportation: {data.averageMonthlyTransportPrice} {currencySymbol}
+          Monthly transportation: <MoneyValue value={data.averageMonthlyTransportPrice} /> {currencySymbol}
         </p>
         <p>
-          Lunch price: {data.averageLunchPrice} {currencySymbol}
+          Lunch price: <MoneyValue value={data.averageLunchPrice} /> {currencySymbol}
         </p>
         <div className="divider" />
 
         <p>Salaries</p>
         <p>
-          Average (before taxes): {data.averageSalaryBeforeTax} {currencySymbol}
+          Average (before taxes): <MoneyValue value={data.averageSalaryBeforeTax} /> {currencySymbol}
         </p>
         <p>
-          Average (after taxes): {data.averageSalaryAfterTax} {currencySymbol}
+          Average (after taxes): <MoneyValue value={data.averageSalaryAfterTax} /> {currencySymbol}
         </p>
         {/*<p>Minimum wage: 1500€</p>*/}
       </div>

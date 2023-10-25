@@ -29,7 +29,6 @@ const AutoComplete = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  // Debounce user input
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!inputValue) {

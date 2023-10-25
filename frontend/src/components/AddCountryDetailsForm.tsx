@@ -42,7 +42,6 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
 
           // navigate to current page + /done
           router.push(`${router.asPath}/done`);
-
         } catch (innerError) {
           console.error('Error in reCAPTCHA execution:', innerError);
           // Handle or re-throw inner error
@@ -64,32 +63,20 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
       <form onSubmit={handleSubmit(onSubmit, onErrors)} className="form form-bordered w-full mx-auto pb-16 pt-8">
         <FormInput required label="What city do you live in?" register={register('city', { required: true })} />
         <div className="divider" />
-        <FormInputMoney
-          label="Monthly rent"
-          register={register('monthlyRent', { required: true, valueAsNumber: true })}
-          currency={(COUNTRY_DETAILS as any)[country].currency}
-        />
+        <FormInputMoney label="Monthly rent" name="monthlyRent" currency={(COUNTRY_DETAILS as any)[country].currency} />
 
-        <FormInputMoney
-          label="Monthly groceries"
-          register={register('monthlyGroceriesPrice', { required: true, valueAsNumber: true })}
-          currency={(COUNTRY_DETAILS as any)[country].currency}
-        />
+        <FormInputMoney label="Monthly groceries" name="monthlyGroceriesPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
 
-        <FormInputMoney
-          label="Lunch price, restaurant"
-          register={register('lunchPrice', { required: true, valueAsNumber: true })}
-          currency={(COUNTRY_DETAILS as any)[country].currency}
-        />
+        <FormInputMoney label="Lunch price, restaurant" name="lunchPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
         <div className="divider" />
         <FormInputMoney
           label="Monthly salary (before tax)"
-          register={register('monthlySalaryBeforeTax', { required: true, valueAsNumber: true })}
+          name="monthlySalaryBeforeTax"
           currency={(COUNTRY_DETAILS as any)[country].currency}
         />
         <FormInputMoney
           label="Monthly salary (after tax)"
-          register={register('monthlySalaryAfterTax', { required: true, valueAsNumber: true })}
+          name="monthlySalaryAfterTax"
           currency={(COUNTRY_DETAILS as any)[country].currency}
         />
         <div className="divider" />
