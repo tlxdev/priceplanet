@@ -77,8 +77,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
         <div
           className="absolute w-full"
           style={{
-            paddingTop: '72px',
-            height: 'calc(100vh)',
+            height: 'calc(100vh - 72px)',
             background: '#FFF'
           }}
         >

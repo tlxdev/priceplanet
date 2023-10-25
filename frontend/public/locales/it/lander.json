@@ -1,12 +1,14 @@
 {
-  "HeroText": "Benvenuto su [Nome del Tuo Sito], la tua guida definitiva al costo della vita in tutto il mondo. Scopri e confronta i costi di affitto, spesa, salari e altro in diverse città.",
-  "HeroInputPlaceholder": "Paese o città",
-  "HeroButtonCTA": "Visualizza Costo della Vita",
-  "HowItWorksText": "Scopri il vero costo della vita in soli tre passaggi. Seleziona una località, visualizza i dettagli completi dei costi e confrontali con altre città. Prendi decisioni informate sulla tua prossima mossa.",
+  "Title": "Costo della Vita | Priceplanet",
+  "HeroText": "Ti trovi attualmente a {{city}}, {{country}}. Ma sapevi che il mondo è un posto vasto?",
+  "HeroInputPlaceholder": "Paese",
+  "HeroButtonCTA": "Cerca",
+  "HowItWorksText": "Scopri il vero costo della vita in soli tre passi. Seleziona una località, visualizza dettagli completi sul costo e confronta con altre città. Prendi decisioni informate sulla tua prossima mossa.",
   "ExploreCitiesText": "Esplora le Città: Ottieni informazioni sui costi di vita nelle principali città di tutto il mondo. Da San Francisco a Sydney, capisci cosa può comprare il tuo denaro.",
-  "DetailedBreakdownText": "Scopri di Più: Non solo il costo totale, noi lo suddividiamo per te. Capisci quanto probabilmente spenderai in affitto, spesa, ristoranti, intrattenimento e altro ancora.",
-  "ComparisonToolText": "Confronta & Contrasta: Metti a confronto due città. Vedi come si confronta la tua attuale località con la tua destinazione dei sogni.",
-  "TestimonialsText": "Ascolta dai nostri utenti: Fidato da migliaia di persone in tutto il mondo, scopri perché [Nome del Tuo Sito] è la scelta principale per le informazioni sul costo della vita.",
-  "CTAText": "Pronto a scoprire il vero costo della vita? Inizia ad esplorare ora e intraprendi il tuo viaggio informato.",
-  "FooterText": "Rimani Connesso: Seguici sui social media per aggiornamenti, intuizioni e storie dalla nostra comunità globale."
-  }
+  "DetailedBreakdownText": "Scava più in profondità: Non solo il costo totale, lo suddividiamo per te. Comprendi quanto sei probabile spendere in affitto, spesa, ristoranti, intrattenimento e altro ancora.",
+  "ComparisonToolText": "Confronta e Contrapponi: Metti a confronto due città. Vedi come si pone la tua attuale località rispetto alla tua destinazione da sogno.",
+  "TestimonialsText": "Ascolta le testimonianze dei nostri utenti: Scelto da migliaia di persone in tutto il mondo, scopri perché [Nome del Tuo Sito Web] è la scelta principale per informazioni sul costo della vita.",
+  "CTAText": "Pronto a scoprire il vero costo della vita? Inizia a esplorare ora e intraprendi il tuo viaggio informato.",
+  "FooterText": "Rimani Connesso: Seguici sui social media per aggiornamenti, approfondimenti e storie dalla nostra comunità globale.",
+  "MetaDescription": "Priceplanet.org è L'UNICO strumento di confronto del costo della vita di cui avrai mai bisogno. Confronta città, esplora costi e prendi decisioni informate sulla tua vita."
+}
