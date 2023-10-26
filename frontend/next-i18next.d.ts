@@ -13,7 +13,6 @@ import type countryDetailsForm from './public/locales/en/country-details-form.js
 import type countryDetails from './public/locales/en/country-details.json';
 import type disclaimer from './public/locales/en/disclaimer.json';
 import type lander from './public/locales/en/lander.json';
-import type seo from './public/locales/en/seo.json';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
@@ -22,7 +21,6 @@ declare module 'i18next' {
       common: typeof common;
       lander: typeof lander;
       'cost-of-living': typeof costOfLiving;
-      seo: typeof seo;
       'country-details': typeof countryDetails;
       'country-details-form': typeof countryDetailsForm;
       disclaimer: typeof disclaimer;

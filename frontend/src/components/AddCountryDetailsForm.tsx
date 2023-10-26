@@ -1,6 +1,7 @@
 import { AddCountryDetailsForm, AddCountryDetailsFormDto } from '@/constants/CostOfLiving';
 import { COUNTRY_DETAILS, Country } from '@/constants/Country';
 import { createCostOfLiving } from '@/services/CostOfLivingService';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -9,6 +10,7 @@ import FormInputMoney from './FormInputMoney';
 import FormInputRating from './FormInputRating';
 
 const AddCountryDetailsForm = ({ country }: { country: Country }) => {
+  const { t } = useTranslation(['country-details-form', 'common']);
   const methods = useForm<AddCountryDetailsForm>();
 
   const router = useRouter();
@@ -58,33 +60,31 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
 
   return (
     <FormProvider {...methods}>
-      <h1 className="text-2xl font-semibold">Submit details for {country}</h1>
+      <h1 className="text-2xl font-semibold">{t('country-details-form:SubmitDetailsFor', { country: t(`common:Country.${country}`) })}</h1>
       <form onSubmit={handleSubmit(onSubmit, onErrors)} className="form form-bordered w-full mx-auto pb-16 pt-8">
-        <FormInput required label="What city do you live in?" register={register('city', { required: true })} />
+        <FormInput required label={t('country-details-form:WhatCityDoYouLiveIn')} register={register('city', { required: true })} />
         <div className="divider" />
-        <FormInputMoney label="Monthly rent" name="monthlyRent" currency={(COUNTRY_DETAILS as any)[country].currency} />
-
-        <FormInputMoney label="Monthly groceries" name="monthlyGroceriesPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
-
-        <FormInputMoney label="Lunch price, restaurant" name="lunchPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:MonthlyRentLabel')} name="monthlyRent" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:MonthlyGroceries')} name="monthlyGroceriesPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:LunchPriceRestaurant')} name="lunchPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
         <div className="divider" />
         <FormInputMoney
-          label="Monthly salary (before tax)"
+          label={t('country-details-form:MonthlySalaryBeforeTax')}
           name="monthlySalaryBeforeTax"
           currency={(COUNTRY_DETAILS as any)[country].currency}
         />
         <FormInputMoney
-          label="Monthly salary (after tax)"
+          label={t('country-details-form:MonthlySalaryAfterTax')}
           name="monthlySalaryAfterTax"
           currency={(COUNTRY_DETAILS as any)[country].currency}
         />
         <div className="divider" />
-        <FormInputRating label="On a scale of 0-10, how happy are you overall?" name="happinessIndex" />
-        <FormInputRating label="On a scale of 0-10, how safe do you feel in your location?" name="safetyIndex" />
+        <FormInputRating label={t('country-details-form:HappinessScale')} name="happinessIndex" />
+        <FormInputRating label={t('country-details-form:SafetyScale')} name="safetyIndex" />
         <div className="divider" />
         <div className="form-control mt-6 w-64">
           <button className="btn btn-primary" type="submit">
-            Submit
+            {t('country-details-form:SubmitButton')}
           </button>
         </div>
       </form>

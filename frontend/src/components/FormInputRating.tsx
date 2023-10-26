@@ -13,8 +13,8 @@ const FormInputRating = ({ label, name }: { label: string; name: string }) => {
   };
 
   return (
-    <div className="flex flex-wrap mb-4">
-      <label className="label flex-row">
+    <div className="mb-4">
+      <label className="label block">
         <span className="label-text text-xs md:text-sm">{label}</span>
       </label>
       <div className="flex space-x-2">

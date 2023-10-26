@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const LanderAutoComplete = () => {
-  const { t, i18n } = useTranslation(['common', 'lander', 'seo']);
+  const { t, i18n } = useTranslation(['common', 'lander']);
   const router = useRouter();
 
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
@@ -33,7 +33,7 @@ const LanderAutoComplete = () => {
 
     const selectedCountryValue = selectedCountry as Country;
 
-    const seoFriendlyCountryName = t(`seo:CountrySeoFriendlyName.${selectedCountryValue}` as const);
+    const seoFriendlyCountryName = t(`common:CountrySeoFriendlyName.${selectedCountryValue}` as const);
 
     if (i18n.language === DEFAULT_LOCALE) {
       return router.push(`/country/${seoFriendlyCountryName}`);
@@ -89,8 +89,8 @@ const Lander = ({ location }: { location: GeoLocation }) => {
         </div>
         <div className="hero-content text-center text-black">
           <div className="max-w-xl md:max-w-sm xl:max-w-xl hero-custom">
-            <h1 className="text-xl xl:text-5xl font-bold">Discover</h1>
-            <h1 className="mb-2 text-4xl xl:text-8xl font-bold">Living Costs Worldwide</h1>
+            <h1 className="text-xl xl:text-5xl font-bold">{t('lander:HeroTitle')}</h1>
+            <h1 className="mb-2 text-4xl xl:text-8xl font-bold">{t('lander:HeroSubtitle')}</h1>
             <p className="mb-5">
               {t('lander:HeroText', {
                 city: location.city,
@@ -100,7 +100,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
 
             <LanderAutoComplete />
 
-            <Link href={`/country/${countryName.toLowerCase()}/add-details`}>
+            <Link href={`/country/${location.country.toLowerCase()}/add-details`}>
               <button className="btn btn-primary px-8 mt-6 h-12 text-lg border-gray-400">
                 <div className="space-x-2">
                   <span>{t('lander:SubmitMyDetails')}</span>
@@ -130,7 +130,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     return {
       props: {
         location,
-        ...(await serverSideTranslations(locale, ['common', 'lander', 'seo'])),
+        ...(await serverSideTranslations(locale, ['common', 'lander'])),
 
         // Will be passed to the page component as props
       },

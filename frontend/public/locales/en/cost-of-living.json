@@ -1,3 +1,13 @@
 {
-    "title": "{{country}} - Cost of Living"
+    "title": "{{country}} - Cost of Living",
+    "AddMyDetails": "Add my details",
+    "AreYouALocalAddMyDetails": "Are you a local? Add your details to help others!",
+    "CostOfLiving": "Cost of Living",
+    "MonthlyRent": "Monthly rent:",
+    "MonthlyGroceries": "Monthly groceries:",
+    "MonthlyTransportation": "Monthly transportation:",
+    "LunchPrice": "Lunch price:",
+    "Salaries": "Salaries",
+    "AverageBeforeTaxes": "Average (before taxes):",
+    "AverageAfterTaxes": "Average (after taxes):"
 }

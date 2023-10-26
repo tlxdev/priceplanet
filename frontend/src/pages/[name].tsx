@@ -29,7 +29,7 @@ interface PublicPriceData {
 }
 
 const CountryPage = ({ country, data }: { country: Country; data: PublicPriceData }) => {
-  const { t } = useTranslation(['common', 'seo', 'cost-of-living']);
+  const { t } = useTranslation(['common', 'cost-of-living']);
 
   const currency = COUNTRY_DETAILS[country].currency;
 
@@ -47,39 +47,44 @@ const CountryPage = ({ country, data }: { country: Country; data: PublicPriceDat
       </Head>
       <div className="flex flex-col content">
         <h1 className="text-center text-3xl mt-4 mb-4">{t(`common:Country.${country}` as const)} </h1>
-        <p className="mt-5">{t(`country-details:${country}` as any)}</p>
+        <p className="mt-5">{t(`country-details:${country}` as any, {
+          defaultValue: ''
+        })}</p>
 
         <div className="alert mt-10 mb-10">
-          <span>Are you a local? Add your details to help others!</span>
-          <a href={`/country/${getSeoFriendlyName(t, country)}/add-details`}>
-            <button className="btn btn-ghost mx-0 px-">Add my details {countryCodeToEmoji(country)}</button>
+          <span>{t('cost-of-living:AreYouALocalAddMyDetails')}</span>
+          <a href={`/country/${country.toLowerCase()}/add-details`}>
+            <button className="btn btn-ghost mx-0 w-auto">
+              {t('cost-of-living:AddMyDetails')} {countryCodeToEmoji(country)}
+            </button>
           </a>
         </div>
 
         <div className="divider" />
 
-        <p>Cost of Living</p>
+        <p>{t('cost-of-living:CostOfLiving')}</p>
         <p>
-          Monthly rent: <MoneyValue value={data.averageRent} /> {currencySymbol}
+          {t('cost-of-living:MonthlyRent')} <MoneyValue value={data.averageRent} /> {currencySymbol}
         </p>
         <p>
-          Monthly groceries: <MoneyValue value={data.averageMonthlyGroceriesPrice} /> {currencySymbol}
+          {t('cost-of-living:MonthlyGroceries')} <MoneyValue value={data.averageMonthlyGroceriesPrice} /> {currencySymbol}
         </p>
         <p>
-          Monthly transportation: <MoneyValue value={data.averageMonthlyTransportPrice} /> {currencySymbol}
+          {t('cost-of-living:MonthlyTransportation')} <MoneyValue value={data.averageMonthlyTransportPrice} /> {currencySymbol}
         </p>
         <p>
-          Lunch price: <MoneyValue value={data.averageLunchPrice} /> {currencySymbol}
+          {t('cost-of-living:LunchPrice')} <MoneyValue value={data.averageLunchPrice} /> {currencySymbol}
         </p>
         <div className="divider" />
 
-        <p>Salaries</p>
+        <p>{t('cost-of-living:Salaries')}</p>
         <p>
-          Average (before taxes): <MoneyValue value={data.averageSalaryBeforeTax} /> {currencySymbol}
+          {t('cost-of-living:AverageBeforeTaxes')} <MoneyValue value={data.averageSalaryBeforeTax} /> {currencySymbol}
         </p>
         <p>
-          Average (after taxes): <MoneyValue value={data.averageSalaryAfterTax} /> {currencySymbol}
+          {t('cost-of-living:AverageAfterTaxes')} <MoneyValue value={data.averageSalaryAfterTax} /> {currencySymbol}
         </p>
+
         {/*<p>Minimum wage: 1500€</p>*/}
       </div>
     </>
@@ -97,28 +102,33 @@ const SeoToCountryMap = Object.values(Country).reduce((map, country) => {
 export async function getStaticPaths() {
   const paths = [];
 
-  const languages = ['en'];
+  const languages = ['en', 'it'];
   const defaultLanguage = 'en';
 
-  await i18n.use(Backend).init({
-    lng: defaultLanguage,
-    fallbackLng: defaultLanguage,
-    ns: ['seo'],
-    defaultNS: 'seo',
-    backend: {
-      loadPath: './public/locales/{{lng}}/{{ns}}.json',
-    },
-  });
+  // Loop over each language and generate paths for each one
+  for (const language of languages) {
+    await i18n.use(Backend).init({
+      lng: language, // Set the current language
+      fallbackLng: defaultLanguage,
+      ns: ['common'],
+      defaultNS: 'common',
+      backend: {
+        loadPath: './public/locales/{{lng}}/{{ns}}.json',
+      },
+    });
 
-  const countryPaths = Object.values(Country).map((country) => {
-    return {
-      params: { name: getSeoFriendlyName(i18n.t, country) },
-      locale: defaultLanguage,
-    };
-  });
+    const countryPathsForLanguage = Object.values(Country).map((country) => {
+      return {
+        params: { name: getSeoFriendlyName(i18n.t, country) },
+        locale: language,
+      };
+    });
+
+    paths.push(...countryPathsForLanguage);
+  }
 
   return {
-    paths: countryPaths,
+    paths: paths,
     fallback: false,
   };
 }
@@ -126,12 +136,8 @@ export async function getStaticPaths() {
 const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendlyName: string; locale: string }): Country => {
   let SeoToCountryMap: any = seoCache.get(locale);
 
-  if (locale !== 'en') {
-    throw new Error('locale is not a valid locale');
-  }
-
   if (!SeoToCountryMap) {
-    const seoTranslationFilePath = path.join(process.cwd(), `./public/locales/${locale}/seo.json`);
+    const seoTranslationFilePath = path.join(process.cwd(), `./public/locales/${locale}/common.json`);
     const seoTranslations: {
       CountrySeoFriendlyName: {
         [country: string]: string;
@@ -164,7 +170,7 @@ export async function getStaticProps({ locale, params }: { locale: string; param
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'seo', 'country-details'])),
+      ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'country-details'])),
       country,
       data,
     },

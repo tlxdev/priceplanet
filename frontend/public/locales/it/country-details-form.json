@@ -1,0 +1,19 @@
+{
+  "Title": "{{country}} - Invia dettagli sul Costo della Vita",
+  "City": "Città",
+  "MonthlyMortgage": "Pagamento mensile del mutuo",
+  "MonthlyRent": "Affitto mensile",
+  "MonthlySalary": "Stipendio mensile",
+  "ThankYouForSubmission": "Grazie per la tua sottomissione!",
+  "FindOutHowYouCompareGlobally": "Presto potrai scoprire come ti confronti a livello globale.",
+  "SubmitDetailsFor": "Invia dettagli per {{country}}",
+  "WhatCityDoYouLiveIn": "In quale città vivi?",
+  "MonthlyRentLabel": "Affitto mensile",
+  "MonthlyGroceries": "Spesa mensile",
+  "LunchPriceRestaurant": "Prezzo del pranzo, ristorante",
+  "MonthlySalaryBeforeTax": "Stipendio mensile (prima delle tasse)",
+  "MonthlySalaryAfterTax": "Stipendio mensile (dopo le tasse)",
+  "HappinessScale": "Su una scala da 0 a 10, quanto sei felice in generale?",
+  "SafetyScale": "Su una scala da 0 a 10, quanto ti senti al sicuro nel tuo luogo?",
+  "SubmitButton": "Invia"
+}
