@@ -7,16 +7,29 @@ import Backend from 'i18next-fs-backend';
 
 import AddCountryDetailsForm from '@/components/AddCountryDetailsForm';
 import fs from 'fs';
+import Head from 'next/head';
 import NodeCache from 'node-cache';
 import path from 'path';
+import { useTranslation } from 'react-i18next';
 
 const seoCache = new NodeCache();
 
-const CountryPage = ({ country }: { country: Country }) => {
+const AddCountryDetailsPage = ({ country }: { country: Country }) => {
+  const { t } = useTranslation(['common', 'country-details-form']);
+
   return (
-    <div className="lg:w-1/2 sm:w-1/2 container pl-6 sm:pl-0 sm:mx-auto">
-      <AddCountryDetailsForm country={country} />
-    </div>
+    <>
+      <Head>
+        <title>
+          {t('country-details-form:Title', {
+            country: t(`common:Country.${country}` as const),
+          })}
+        </title>
+      </Head>
+      <div className="lg:w-1/2 sm:w-1/2 container pl-6 sm:pl-0 sm:mx-auto">
+        <AddCountryDetailsForm country={country} />
+      </div>
+    </>
   );
 };
 
@@ -93,10 +106,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ locale, params }: { locale: string; params: { name: string; country: Country } }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'cost-of-living'])),
+      ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'country-details-form'])),
       country: getCountryFromSeoFriendlyName({ seoFriendlyName: params.name, locale }),
     },
   };
 }
 
-export default CountryPage;
+export default AddCountryDetailsPage;

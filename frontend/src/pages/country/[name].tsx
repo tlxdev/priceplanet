@@ -158,7 +158,6 @@ const getCountryFromSeoFriendlyName = ({ seoFriendlyName, locale }: { seoFriendl
 // Convert next line to arrow function:
 export async function getStaticProps({ locale, params }: { locale: string; params: { name: string } }) {
   const country = getCountryFromSeoFriendlyName({ seoFriendlyName: params.name, locale });
-  console.log(`${process.env.NEXT_PUBLIC_API_URL}/cost-of-living/country/${country}`);
   const apiResponse = await typedFetch<PublicCostOfLivingData>(`${process.env.NEXT_PUBLIC_API_URL}/cost-of-living/country/${country}`);
 
   const data = apiResponse.data;
