@@ -9,5 +9,6 @@
     "LunchPrice": "Lunch price:",
     "Salaries": "Salaries",
     "AverageBeforeTaxes": "Average (before taxes):",
-    "AverageAfterTaxes": "Average (after taxes):"
+    "AverageAfterTaxes": "Average (after taxes):",
+    "CountryCostOfLivingMetaDetails": "Costo della vita in {{country}}. Prezzi in {{country}}. Affitti e stipendi in {{country}}."
 }

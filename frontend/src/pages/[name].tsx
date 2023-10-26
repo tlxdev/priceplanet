@@ -43,7 +43,15 @@ const CountryPage = ({ country, data }: { country: Country; data: PublicPriceDat
             country: t(`common:Country.${country}` as const),
           })}
         </title>
-        <meta name="description" content={`${t(`common:Country.${country}`)} Cost of Living`} />
+        <meta name="description" content={`${t(`cost-of-living:CountryCostOfLivingMetaDetails`, {
+          country: t(`common:Country.${country}` as const),
+        })}`} />
+        <meta name="og:title" content={`${t('cost-of-living:title', {
+          country: t(`common:Country.${country}` as const),
+        })}`} />
+        <meta name="og:description" content={`${t(`cost-of-living:CountryCostOfLivingMetaDetails`, {
+          country: t(`common:Country.${country}` as const),
+        })}`} />
       </Head>
       <div className="flex flex-col content">
         <h1 className="text-center text-3xl mt-4 mb-4">{t(`common:Country.${country}` as const)} </h1>
