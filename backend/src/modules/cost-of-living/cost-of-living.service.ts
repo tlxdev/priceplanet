@@ -17,7 +17,21 @@ export class CostOfLivingService {
     await this.recaptchaService.verifyRecaptcha(createCostOfLivingDto.recaptchaToken);
 
     await this.prismaService.costOfLiving.create({
-      data: createCostOfLivingDto,
+      data: {
+        country: createCostOfLivingDto.country,
+        city: createCostOfLivingDto.city,
+        monthlyRent: createCostOfLivingDto.monthlyRent,
+        monthlySalaryBeforeTax: createCostOfLivingDto.monthlySalaryBeforeTax,
+        monthlySalaryAfterTax: createCostOfLivingDto.monthlySalaryAfterTax,
+        monthlyGroceriesPrice: createCostOfLivingDto.monthlyGroceriesPrice,
+        lunchPrice: createCostOfLivingDto.lunchPrice,
+        happinessIndex: createCostOfLivingDto.happinessIndex,
+        safetyIndex: createCostOfLivingDto.safetyIndex,
+        nightWalkSafetyIndex: createCostOfLivingDto.nightWalkSafetyIndex,
+        healthcareSatisfactionIndex: createCostOfLivingDto.healthcareSatisfactionIndex,
+        infrastructureSatisfactionIndex: createCostOfLivingDto.infrastructureSatisfactionIndex,
+        environmentQualityIndex: createCostOfLivingDto.environmentQualityIndex,
+      },
     });
 
     return Promise.resolve();
