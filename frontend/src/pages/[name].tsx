@@ -53,7 +53,7 @@ const CountryPage = ({ country, data }: { country: Country; data: PublicPriceDat
 
         <div className="alert mt-10 mb-10">
           <span>{t('cost-of-living:AreYouALocalAddMyDetails')}</span>
-          <a href={`/country/${country}/add-details`}>
+          <a href={`/country/${country.toLowerCase()}/add-details`}>
             <button className="btn btn-ghost mx-0 w-auto">
               {t('cost-of-living:AddMyDetails')} {countryCodeToEmoji(country)}
             </button>

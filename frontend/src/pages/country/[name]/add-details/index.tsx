@@ -27,7 +27,7 @@ const getServerSideProps = async ({ locale, params }: { locale: string; params: 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'cost-of-living', 'country-details-form'])),
-      country: params.name,
+      country: params.name.toUpperCase(),
     },
   };
 };
