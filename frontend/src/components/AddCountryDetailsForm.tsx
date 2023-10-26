@@ -1,4 +1,4 @@
-import { AddCountryDetailsForm } from '@/constants/CostOfLiving';
+import { AddCountryDetailsForm, AddCountryDetailsFormDto } from '@/constants/CostOfLiving';
 import { COUNTRY_DETAILS, Country } from '@/constants/Country';
 import { createCostOfLiving } from '@/services/CostOfLivingService';
 import { useRouter } from 'next/router';
@@ -32,11 +32,10 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
         try {
           const token = await (window as any).grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, { action: 'submit' });
 
-          // TODO: submit token to backend, and verify it in backend
-
-          const submitData = {
+          const submitData: AddCountryDetailsFormDto = {
             ...data,
             country,
+            recaptchaToken: token,
           };
           await createCostOfLiving(submitData);
 

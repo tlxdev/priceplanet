@@ -1,3 +1,5 @@
+# NOTE: when adding deps locally, you have to run the command:
+# npm run prune-dev-npm
 # docker-compose.yml
 version: "3.8"
 
@@ -10,7 +12,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
-      - /app/node_modules
+      - node_modules_data:/app/node_modules
     ports:
       - 5555:5555
     environment:
@@ -32,3 +34,4 @@ services:
 
 volumes:
   postgres_data:
+  node_modules_data:

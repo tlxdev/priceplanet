@@ -53,6 +53,8 @@ export interface AddCountryDetailsForm {
 
 export type AddCountryDetailsFormDto = AddCountryDetailsForm & {
   country: Country;
+
+  recaptchaToken: string;
 };
 
 export interface CountryCostOfLiving {

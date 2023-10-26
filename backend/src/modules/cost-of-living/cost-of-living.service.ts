@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Country } from '@prisma/client';
 import { PrismaService } from 'src/lib/prisma/prisma.service';
+import { RecaptchaService } from '../recaptcha/recaptcha.service';
 import { CreateCostOfLivingDto } from './dto/create-cost-of-living.dto';
 import { PublicCostOfLivingData } from './interfaces/CostOfLivingInterfaces';
 
@@ -10,9 +11,11 @@ export interface AverageCostOfLiving {
 
 @Injectable()
 export class CostOfLivingService {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prismaService: PrismaService, private recaptchaService: RecaptchaService) {}
 
   async create(createCostOfLivingDto: CreateCostOfLivingDto): Promise<void> {
+    await this.recaptchaService.verifyRecaptcha(createCostOfLivingDto.recaptchaToken);
+
     await this.prismaService.costOfLiving.create({
       data: createCostOfLivingDto,
     });

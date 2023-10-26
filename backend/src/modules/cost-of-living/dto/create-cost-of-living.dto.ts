@@ -14,4 +14,6 @@ export class CreateCostOfLivingDto {
   healthcareSatisfactionIndex: number;
   infrastructureSatisfactionIndex: number;
   environmentQualityIndex: number;
+
+  recaptchaToken: string;
 }
