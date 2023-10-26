@@ -15,7 +15,7 @@ const FormInputRating = ({ label, name }: { label: string; name: string }) => {
   return (
     <div className="flex flex-wrap mb-4">
       <label className="label flex-row">
-        <span className="label-text">{label}</span>
+        <span className="label-text text-xs md:text-sm">{label}</span>
       </label>
       <div className="flex space-x-2">
         {Array.from({ length: 11 }, (_, i) => i).map((value) => (
@@ -28,8 +28,8 @@ const FormInputRating = ({ label, name }: { label: string; name: string }) => {
               <button
                 key={value}
                 className={`
-                  py-2 px-4 rounded transition-all duration-200 ease-in-out 
-                  font-medium text-sm 
+                  py-1 px-2 md:py-2 md:px-4 rounded transition-all duration-200 ease-in-out 
+                  font-medium text-xs md:text-sm 
                   ${value === selectedNumber ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700'}
                   hover:${value === selectedNumber ? 'bg-primary' : 'bg-gray-300'}
                 `}

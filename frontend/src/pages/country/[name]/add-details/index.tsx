@@ -14,7 +14,7 @@ const seoCache = new NodeCache();
 
 const CountryPage = ({ country }: { country: Country }) => {
   return (
-    <div className="lg:w-1/2 sm:w-1/2 xs:w-full container mx-auto">
+    <div className="lg:w-1/2 sm:w-1/2 container pl-6 sm:pl-0 sm:mx-auto">
       <AddCountryDetailsForm country={country} />
     </div>
   );
