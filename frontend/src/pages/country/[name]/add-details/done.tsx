@@ -29,8 +29,8 @@ export async function getStaticPaths() {
   await i18n.use(Backend).init({
     lng: defaultLanguage,
     fallbackLng: defaultLanguage,
-    ns: ['seo'],
-    defaultNS: 'seo',
+    ns: ['common'],
+    defaultNS: 'common',
     backend: {
       loadPath: './public/locales/{{lng}}/{{ns}}.json',
     },

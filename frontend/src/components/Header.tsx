@@ -21,12 +21,12 @@ const Header = () => {
           <Dropdown title={t('common:Region.Europe')}>
             <NestedMenu
               items={[
-                { label: `🇩🇪 ${t('common:Country.DE')}`, href: '/germany' },
-                { label: `🇫🇷 ${t('common:Country.FR')}`, href: '/france' },
-                { label: `🇬🇧 ${t('common:Country.GB')}`, href: '/united-kingdom' },
-                { label: `🇪🇸 ${t('common:Country.ES')}`, href: '/spain' },
-                { label: `🇸🇪 ${t('common:Country.SE')}`, href: '/sweden' },
-                { label: `🇮🇹 ${t('common:Country.IT')}`, href: '/italy' },
+                { label: `🇩🇪 ${t('common:Country.DE')}`, href: `/${t('common:CountrySeoFriendlyName.DE')}` },
+                { label: `🇫🇷 ${t('common:Country.FR')}`, href: `/${t('common:CountrySeoFriendlyName.FR')}` },
+                { label: `🇬🇧 ${t('common:Country.GB')}`, href: `/${t('common:CountrySeoFriendlyName.GB')}` },
+                { label: `🇪🇸 ${t('common:Country.ES')}`, href: `/${t('common:CountrySeoFriendlyName.ES')}` },
+                { label: `🇸🇪 ${t('common:Country.SE')}`, href: `/${t('common:CountrySeoFriendlyName.SE')}` },
+                { label: `🇮🇹 ${t('common:Country.IT')}`, href: `/${t('common:CountrySeoFriendlyName.IT')}` },
               ]}
             />
           </Dropdown>
@@ -34,12 +34,12 @@ const Header = () => {
           <Dropdown title={t('common:Region.Asia')}>
             <NestedMenu
               items={[
-                { label: `🇯🇵 ${t('common:Country.JP')}`, href: '/japan' },
-                { label: `🇹🇭 ${t('common:Country.TH')}`, href: '/thailand' },
-                { label: `🇰🇷 ${t('common:Country.KR')}`, href: '/south-korea' },
-                { label: `🇻🇳 ${t('common:Country.VN')}`, href: '/vietnam' },
-                { label: `🇵🇭 ${t('common:Country.PH')}`, href: '/philippines' },
-                { label: `🇮🇩 ${t('common:Country.ID')}`, href: '/indonesia' },
+                { label: `🇯🇵 ${t('common:Country.JP')}`, href: `/${t('common:CountrySeoFriendlyName.JP')}` },
+                { label: `🇹🇭 ${t('common:Country.TH')}`, href: `/${t('common:CountrySeoFriendlyName.TH')}` },
+                { label: `🇰🇷 ${t('common:Country.KR')}`, href: `/${t('common:CountrySeoFriendlyName.KR')}` },
+                { label: `🇻🇳 ${t('common:Country.VN')}`, href: `/${t('common:CountrySeoFriendlyName.VN')}` },
+                { label: `🇵🇭 ${t('common:Country.PH')}`, href: `/${t('common:CountrySeoFriendlyName.PH')}` },
+                { label: `🇮🇩 ${t('common:Country.ID')}`, href: `/${t('common:CountrySeoFriendlyName.ID')}` },
               ]}
             />
           </Dropdown>
@@ -47,8 +47,8 @@ const Header = () => {
           <Dropdown title={t('common:Region.Africa')}>
             <NestedMenu
               items={[
-                { label: `🇳🇬 ${t('common:Country.NG')}`, href: '/nigeria' },
-                { label: `🇿🇦 ${t('common:Country.ZA')}`, href: '/south-africa' },
+                { label: `🇳🇬 ${t('common:Country.NG')}`, href: `/${t('common:CountrySeoFriendlyName.NG')}` },
+                { label: `🇿🇦 ${t('common:Country.ZA')}`, href: `/${t('common:CountrySeoFriendlyName.ZA')}` },
               ]}
             />
           </Dropdown>
@@ -56,9 +56,9 @@ const Header = () => {
           <Dropdown title={t('common:Region.Americas')}>
             <NestedMenu
               items={[
-                { label: `🇺🇸 ${t('common:Country.US')}`, href: '/usa' },
-                { label: `🇨🇦 ${t('common:Country.CA')}`, href: '/canada' },
-                { label: `🇧🇷 ${t('common:Country.BR')}`, href: '/brazil' },
+                { label: `🇺🇸 ${t('common:Country.US')}`, href: `/${t('common:CountrySeoFriendlyName.US')}` },
+                { label: `🇨🇦 ${t('common:Country.CA')}`, href: `/${t('common:CountrySeoFriendlyName.CA')}` },
+                { label: `🇧🇷 ${t('common:Country.BR')}`, href: `/${t('common:CountrySeoFriendlyName.BR')}` },
               ]}
             />
           </Dropdown>
@@ -66,8 +66,8 @@ const Header = () => {
           <Dropdown title={t('common:Region.Oceania')}>
             <NestedMenu
               items={[
-                { label: `🇦🇺 ${t('common:Country.AU')}`, href: '/australia' },
-                { label: `🇳🇿 ${t('common:Country.NZ')}`, href: '/new-zealand' },
+                { label: `🇦🇺 ${t('common:Country.AU')}`, href: `/${t('common:CountrySeoFriendlyName.AU')}` },
+                { label: `🇳🇿 ${t('common:Country.NZ')}`, href: `/${t('common:CountrySeoFriendlyName.NZ')}` },
               ]}
             />
           </Dropdown>

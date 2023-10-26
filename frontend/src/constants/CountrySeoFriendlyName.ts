@@ -1,8 +1,8 @@
 import { TFunction } from 'i18next';
 import { Country } from './Country';
 
-type SeoNamespace = ['seo'] | ['seo', any] | [any, 'seo'];
+type SeoNamespace = ['common'] | ['common', any] | [any, 'common'];
 
 export const getSeoFriendlyName = (t: TFunction<SeoNamespace, undefined>, country: Country): string => {
-  return t(`seo:CountrySeoFriendlyName.${country}` as const);
+  return t(`common:CountrySeoFriendlyName.${country}` as const);
 };
