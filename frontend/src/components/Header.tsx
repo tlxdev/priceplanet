@@ -21,12 +21,12 @@ const Header = () => {
           <Dropdown title={t('common:Region.Europe')}>
             <NestedMenu
               items={[
-                { label: `🇩🇪 ${t('common:Country.DE')}`, href: '/country/germany' },
-                { label: `🇫🇷 ${t('common:Country.FR')}`, href: '/country/france' },
-                { label: `🇬🇧 ${t('common:Country.GB')}`, href: '/country/united-kingdom' },
-                { label: `🇪🇸 ${t('common:Country.ES')}`, href: '/country/spain' },
-                { label: `🇸🇪 ${t('common:Country.SE')}`, href: '/country/sweden' },
-                { label: `🇮🇹 ${t('common:Country.IT')}`, href: '/country/italy' },
+                { label: `🇩🇪 ${t('common:Country.DE')}`, href: '/germany' },
+                { label: `🇫🇷 ${t('common:Country.FR')}`, href: '/france' },
+                { label: `🇬🇧 ${t('common:Country.GB')}`, href: '/united-kingdom' },
+                { label: `🇪🇸 ${t('common:Country.ES')}`, href: '/spain' },
+                { label: `🇸🇪 ${t('common:Country.SE')}`, href: '/sweden' },
+                { label: `🇮🇹 ${t('common:Country.IT')}`, href: '/italy' },
               ]}
             />
           </Dropdown>
@@ -34,12 +34,12 @@ const Header = () => {
           <Dropdown title={t('common:Region.Asia')}>
             <NestedMenu
               items={[
-                { label: `🇯🇵 ${t('common:Country.JP')}`, href: '/country/japan' },
-                { label: `🇹🇭 ${t('common:Country.TH')}`, href: '/country/thailand' },
-                { label: `🇰🇷 ${t('common:Country.KR')}`, href: '/country/south-korea' },
-                { label: `🇻🇳 ${t('common:Country.VN')}`, href: '/country/vietnam' },
-                { label: `🇵🇭 ${t('common:Country.PH')}`, href: '/country/philippines' },
-                { label: `🇮🇩 ${t('common:Country.ID')}`, href: '/country/indonesia' },
+                { label: `🇯🇵 ${t('common:Country.JP')}`, href: '/japan' },
+                { label: `🇹🇭 ${t('common:Country.TH')}`, href: '/thailand' },
+                { label: `🇰🇷 ${t('common:Country.KR')}`, href: '/south-korea' },
+                { label: `🇻🇳 ${t('common:Country.VN')}`, href: '/vietnam' },
+                { label: `🇵🇭 ${t('common:Country.PH')}`, href: '/philippines' },
+                { label: `🇮🇩 ${t('common:Country.ID')}`, href: '/indonesia' },
               ]}
             />
           </Dropdown>
@@ -47,8 +47,8 @@ const Header = () => {
           <Dropdown title={t('common:Region.Africa')}>
             <NestedMenu
               items={[
-                { label: `🇳🇬 ${t('common:Country.NG')}`, href: '/country/nigeria' },
-                { label: `🇿🇦 ${t('common:Country.ZA')}`, href: '/country/south-africa' },
+                { label: `🇳🇬 ${t('common:Country.NG')}`, href: '/nigeria' },
+                { label: `🇿🇦 ${t('common:Country.ZA')}`, href: '/south-africa' },
               ]}
             />
           </Dropdown>
@@ -56,9 +56,9 @@ const Header = () => {
           <Dropdown title={t('common:Region.Americas')}>
             <NestedMenu
               items={[
-                { label: `🇺🇸 ${t('common:Country.US')}`, href: '/country/usa' },
-                { label: `🇨🇦 ${t('common:Country.CA')}`, href: '/country/canada' },
-                { label: `🇧🇷 ${t('common:Country.BR')}`, href: '/country/brazil' },
+                { label: `🇺🇸 ${t('common:Country.US')}`, href: '/usa' },
+                { label: `🇨🇦 ${t('common:Country.CA')}`, href: '/canada' },
+                { label: `🇧🇷 ${t('common:Country.BR')}`, href: '/brazil' },
               ]}
             />
           </Dropdown>
@@ -66,8 +66,8 @@ const Header = () => {
           <Dropdown title={t('common:Region.Oceania')}>
             <NestedMenu
               items={[
-                { label: `🇦🇺 ${t('common:Country.AU')}`, href: '/country/australia' },
-                { label: `🇳🇿 ${t('common:Country.NZ')}`, href: '/country/new-zealand' },
+                { label: `🇦🇺 ${t('common:Country.AU')}`, href: '/australia' },
+                { label: `🇳🇿 ${t('common:Country.NZ')}`, href: '/new-zealand' },
               ]}
             />
           </Dropdown>

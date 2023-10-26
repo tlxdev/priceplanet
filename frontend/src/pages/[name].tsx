@@ -51,7 +51,7 @@ const CountryPage = ({ country, data }: { country: Country; data: PublicPriceDat
 
         <div className="alert mt-10 mb-10">
           <span>Are you a local? Add your details to help others!</span>
-          <a href={`/country/${getSeoFriendlyName(t, country)}/add-details`}>
+          <a href={`/country/${country}/add-details`}>
             <button className="btn btn-ghost mx-0 px-">Add my details {countryCodeToEmoji(country)}</button>
           </a>
         </div>
