@@ -61,7 +61,7 @@ const LanderAutoComplete = () => {
 
 interface GeoLocation {
   city: string;
-  country: string;
+  country: Country;
 }
 
 const Lander = ({ location }: { location: GeoLocation }) => {
