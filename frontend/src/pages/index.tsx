@@ -74,7 +74,7 @@ const Lander = ({ location }: { location: GeoLocation }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 100); // Change 10000 to X seconds you want (e.g., 5000 for 5 seconds)
+    }, 10000); // Change 10000 to X seconds you want (e.g., 5000 for 5 seconds)
 
     return () => clearTimeout(timer);
   }, []);
