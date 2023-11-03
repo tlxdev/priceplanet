@@ -8,7 +8,7 @@ import FormInputMoney from './FormInputMoney';
 import FormInputRating from './FormInputRating';
 
 // Define field types and associated components
-const fieldComponents = {
+const fieldComponents: Record<string, React.ComponentType<any>> = {
   monthlyRent: FormInputMoney,
   monthlySalaryBeforeTax: FormInputMoney,
   monthlySalaryAfterTax: FormInputMoney,
