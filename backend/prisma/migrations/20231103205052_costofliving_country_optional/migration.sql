@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "CostOfLiving" ALTER COLUMN "city" DROP NOT NULL,
+ALTER COLUMN "city" SET DEFAULT '';

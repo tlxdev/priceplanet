@@ -33,13 +33,13 @@ export interface EMPLOYMENT_TYPE {
 }
 
 export interface AddCountryDetailsForm {
-  city: string;
-  monthlyRent: number;
-  monthlySalaryBeforeTax: number;
-  monthlySalaryAfterTax: number;
-  monthlyGroceriesPrice: number;
+  city?: string;
+  monthlyRent?: number;
+  monthlySalaryBeforeTax?: number;
+  monthlySalaryAfterTax?: number;
+  monthlyGroceriesPrice?: number;
 
-  lunchPrice: number;
+  lunchPrice?: number;
 
   happinessIndex?: number;
   safetyIndex?: number;
@@ -50,6 +50,11 @@ export interface AddCountryDetailsForm {
 
   environmentalQualityIndex?: number;
 }
+
+
+export type AddCountryDetailsFormFromLanderDto = AddCountryDetailsForm & {
+  country: Country;
+};
 
 export type AddCountryDetailsFormDto = AddCountryDetailsForm & {
   country: Country;

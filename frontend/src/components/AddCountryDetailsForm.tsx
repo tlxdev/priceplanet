@@ -64,9 +64,9 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
       <form onSubmit={handleSubmit(onSubmit, onErrors)} className="form form-bordered w-full mx-auto pb-16 pt-8">
         <FormInput required label={t('country-details-form:WhatCityDoYouLiveIn')} register={register('city', { required: true })} />
         <div className="divider" />
-        <FormInputMoney label={t('country-details-form:MonthlyRentLabel')} name="monthlyRent" currency={(COUNTRY_DETAILS as any)[country].currency} />
-        <FormInputMoney label={t('country-details-form:MonthlyGroceries')} name="monthlyGroceriesPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
-        <FormInputMoney label={t('country-details-form:LunchPriceRestaurant')} name="lunchPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:MonthlyRent')} name="monthlyRent" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:MonthlyGroceriesPrice')} name="monthlyGroceriesPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
+        <FormInputMoney label={t('country-details-form:LunchPrice')} name="lunchPrice" currency={(COUNTRY_DETAILS as any)[country].currency} />
         <div className="divider" />
         <FormInputMoney
           label={t('country-details-form:MonthlySalaryBeforeTax')}
@@ -79,8 +79,8 @@ const AddCountryDetailsForm = ({ country }: { country: Country }) => {
           currency={(COUNTRY_DETAILS as any)[country].currency}
         />
         <div className="divider" />
-        <FormInputRating label={t('country-details-form:HappinessScale')} name="happinessIndex" />
-        <FormInputRating label={t('country-details-form:SafetyScale')} name="safetyIndex" />
+        <FormInputRating label={t('country-details-form:HappinessIndex')} name="happinessIndex" />
+        <FormInputRating label={t('country-details-form:SafetyIndex')} name="safetyIndex" />
         <div className="divider" />
         <div className="form-control mt-6 w-64">
           <button className="btn btn-primary" type="submit">

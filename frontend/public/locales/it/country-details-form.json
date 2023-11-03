@@ -8,12 +8,12 @@
   "FindOutHowYouCompareGlobally": "Presto potrai scoprire come ti confronti a livello globale.",
   "SubmitDetailsFor": "Invia dettagli per {{country}}",
   "WhatCityDoYouLiveIn": "In quale città vivi?",
-  "MonthlyRentLabel": "Affitto mensile",
-  "MonthlyGroceries": "Spesa mensile",
-  "LunchPriceRestaurant": "Prezzo del pranzo, ristorante",
+  "MonthlyGroceriesPrice": "Spesa mensile",
+  "LunchPrice": "Prezzo del pranzo, ristorante",
   "MonthlySalaryBeforeTax": "Stipendio mensile (prima delle tasse)",
   "MonthlySalaryAfterTax": "Stipendio mensile (dopo le tasse)",
-  "HappinessScale": "Su una scala da 0 a 10, quanto sei felice in generale?",
-  "SafetyScale": "Su una scala da 0 a 10, quanto ti senti al sicuro nel tuo luogo?",
-  "SubmitButton": "Invia"
+  "HappinessIndex": "Su una scala da 0 a 10, quanto sei felice in generale?",
+  "SafetyIndex": "Su una scala da 0 a 10, quanto ti senti al sicuro nel tuo luogo?",
+  "SubmitButton": "Invia",
+  "LanderFormTitle": "Piccola domanda.. 🥺👉👈"
 }

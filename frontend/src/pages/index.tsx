@@ -1,4 +1,5 @@
 import AutoComplete from '@/components/AutoComplete';
+import PopupForm from '@/components/LanderPopupForm';
 import { Country } from '@/constants/Country';
 import { DEFAULT_LOCALE } from '@/constants/Locale';
 import { countryCodeToEmoji } from '@/utils/CountryUtils';
@@ -9,7 +10,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const LanderAutoComplete = () => {
   const { t, i18n } = useTranslation(['common', 'lander']);
@@ -68,6 +69,16 @@ const Lander = ({ location }: { location: GeoLocation }) => {
 
   const countryName = t(`common:Country.${location.country}` as any);
 
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 100); // Change 10000 to X seconds you want (e.g., 5000 for 5 seconds)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Head>
@@ -110,6 +121,8 @@ const Lander = ({ location }: { location: GeoLocation }) => {
             </Link>
           </div>
         </div>
+
+        {showPopup && <PopupForm setIsVisible={setShowPopup} country={location.country} />}
       </div>
     </>
   );
@@ -123,14 +136,14 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     const country = req.headers['x-vercel-ip-country'];
     const location = {
       city: city || '?',
-      country: country || 'Unknown',
+      country: country || Country.DE,
     };
     const locale = context.locale || DEFAULT_LOCALE;
 
     return {
       props: {
         location,
-        ...(await serverSideTranslations(locale, ['common', 'lander'])),
+        ...(await serverSideTranslations(locale, ['common', 'lander', 'country-details-form'])),
 
         // Will be passed to the page component as props
       },

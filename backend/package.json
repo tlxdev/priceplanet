@@ -23,7 +23,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate-dev": "docker compose exec app npx prisma migrate dev",
     "migrate-prod": "npx prisma migrate deploy",
-    "prune-dev-npm": "docker compose down && docker volume rm backend_node_modules_data"
+    "prune-dev-npm": "docker compose down && docker volume rm backend_node_modules_data && docker compose build"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

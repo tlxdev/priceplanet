@@ -213,7 +213,7 @@ model CostOfLiving {
   createdAt DateTime @default(now())
 
   country Country
-  city    String
+  city    String? @default("")
 
   monthlyRent            Int?
   monthlySalaryBeforeTax Int?
