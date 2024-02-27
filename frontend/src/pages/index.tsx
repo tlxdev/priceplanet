@@ -37,9 +37,9 @@ const LanderAutoComplete = () => {
     const seoFriendlyCountryName = t(`common:CountrySeoFriendlyName.${selectedCountryValue}` as const);
 
     if (i18n.language === DEFAULT_LOCALE) {
-      return router.push(`/country/${seoFriendlyCountryName}`);
+      return router.push(`/${seoFriendlyCountryName}`);
     }
-    return router.push(`${i18n.language}/country/${seoFriendlyCountryName}`);
+    return router.push(`${i18n.language}/${seoFriendlyCountryName}`);
   };
 
   return (
