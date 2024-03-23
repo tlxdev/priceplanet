@@ -20,7 +20,6 @@ const fieldComponents: Record<string, React.ComponentType<any>> = {
 };
 
 export default function PopupForm({ setIsVisible, country }: { setIsVisible: (isVisible: boolean) => void; country: Country }) {
-  const [email, setEmail] = useState('');
 
   const { t } = useTranslation(['common', 'country-details-form']);
 
@@ -115,6 +114,8 @@ export default function PopupForm({ setIsVisible, country }: { setIsVisible: (is
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit, onErrors)}>
             <div className="text-2xl font-semibold mb-4">{t('country-details-form:LanderFormTitle')}</div>
+
+            <div className="text-sm text-gray-500 mb-4">{t('country-details-form:LanderFormDescription')}</div>
 
             {/* Step 3: Render the chosen field */}
             {renderRandomField()}
